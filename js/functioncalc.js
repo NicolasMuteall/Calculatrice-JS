@@ -50,6 +50,14 @@ const btn0 = document.getElementById("btn0");
 const btnComma = document.getElementById("btnComma");
 const btnEqual = document.getElementById("btnEqual");
 
+/*-----------------------------------------------------------------------------------------------------*/
+
+function disableInput() {
+  inputCalc.readOnly = true;
+  inputResult.readOnly = true;
+}
+disableInput();
+
 function Clear() {
   btnC.onclick = function () {
     inputCalc.value = '';
@@ -72,7 +80,7 @@ function AddNumber(btn, content) {
 
   btn.onclick = function () {
     inputCalc.value += content;
-    console.log(inputCalc.value);
+    /*console.log(inputCalc.value);*/
   }
 
 }
@@ -103,13 +111,48 @@ AddOperator(btnSubstract, '-');
 AddOperator(btnDivide, '/');
 AddOperator(btnMultiply, '*');
 AddOperator(btnComma, '.');
+AddOperator(btnPourcent, '%');
 
 function result() {
+
   btnEqual.onclick = function () {
-    let result = eval(inputCalc.value);
-    console.log(result);
-    inputResult.value = result;
+
+    /*-----------------------------------NICOLAS---------------------------------------------*/
+    let chain = inputCalc.value;
+    let chainDivide = chain.split(/[-+*/]/);
+    let regEx = /^[0-9]+$/;
+
+    console.log(chainDivide);
+    let tabTrueFalse = [];
+    for (i = 0; i < chainDivide.length; i++) {
+
+      function OnlyNumber(testChain) {
+        tabTrueFalse.push(regEx.test(testChain));
+      }
+      OnlyNumber(chainDivide[i]);
+    }
+    console.log(tabTrueFalse);
+    console.log(tabTrueFalse.includes(false));
+
+    if (tabTrueFalse.includes(false) === false) {
+      let result = eval(inputCalc.value);
+      console.log(result);
+      inputResult.value = result;
+    } else {
+      for (i = 0; i < chainDivide.length; i++) {
+
+        if (regEx.test(chainDivide[i]) === false) {
+          console.log(chainDivide[i]);
+        }
+
+      }
+    }
   }
+
+  /*-----------------------------------------------------------------------------------------*/
+  let result = eval(inputCalc.value);
+  console.log(result);
+  inputResult.value = result;
 }
 result();
 
