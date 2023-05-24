@@ -3,15 +3,15 @@ let rowMemory = ["MC", "MR", "M+", "M-", "MS"];
 const tableCalculator = document.getElementById("tableCalc");
 
 function CreateMemoryLine() {
-  let memoryLine = document.createElement("tr");
-  memoryLine.setAttribute("id", "memoryLine");
-  tableCalc.appendChild(memoryLine);
+    let memoryLine = document.createElement("tr");
+    memoryLine.setAttribute("id", "memoryLine");
+    tableCalc.appendChild(memoryLine);
 
-  for (i = 0; i < rowMemory.length; i++) {
-    let memoryCell = document.createElement("td");
-    memoryLine.appendChild(memoryCell);
-    memoryCell.innerHTML += rowMemory[i];
-  }
+    for (i = 0; i < rowMemory.length; i++) {
+        let memoryCell = document.createElement("td");
+        memoryLine.appendChild(memoryCell);
+        memoryCell.innerHTML += rowMemory[i];
+    }
 }
 CreateMemoryLine();
 
@@ -52,11 +52,14 @@ const btnEqual = document.getElementById("btnEqual");
 const btnLog = document.getElementById("btnLog");
 const btnLn = document.getElementById("btnLn");
 
+const btnPi = document.getElementById("btnPi");
+const btnE = document.getElementById("btnE");
+
 function Clear() {
-  btnC.onclick = function () {
-    inputCalc.value = "";
-    inputResult.value = "";
-  };
+    btnC.onclick = function () {
+        inputCalc.value = "";
+        inputResult.value = "";
+    };
 }
 Clear();
 
@@ -89,16 +92,19 @@ AddNumber(btn9, 9);
 AddNumber(btnLog);
 // AddNumber(btnLn, Math.);
 
-function AddOperator(btn, operator) {
-  btn.onclick = function () {
-    let chain = inputCalc.value;
-    let lastChart = chain.charAt(chain.length - 1);
-    /*console.log(lastChart);*/
+AddNumber(btnPi, Math.PI);
+AddNumber(btnE, Math.E);
 
-    if (lastChart !== operator && lastChart !== "") {
-      inputCalc.value += operator;
-    }
-  };
+function AddOperator(btn, operator) {
+    btn.onclick = function () {
+        let chain = inputCalc.value;
+        let lastChart = chain.charAt(chain.length - 1);
+        /*console.log(lastChart);*/
+
+        if (lastChart !== operator && lastChart !== "") {
+            inputCalc.value += operator;
+        }
+    };
 }
 AddOperator(btnAdd, "+");
 AddOperator(btnSubstract, "-");
