@@ -18,13 +18,11 @@ body {
     margin-top: 100px;
     width: 360px;
     height: 496px;
-    border: solid black 1px;
+    border: solid rgb(188, 186, 186) 20px;
     background-color: #ECE8E8;
-    border-radius: 5px;
+    border-radius: 20px;
     box-shadow: 10px 10px 25px -4px rgba(0, 0, 0, 0.75);
 }
-
-
 
 #headerSci {
     margin-top: 6px;
@@ -32,26 +30,37 @@ body {
 }
 
 .col1 {
-    width: 265px;
-    height: 44px;
+
+    width: 260px;
+    height: 35px;
     margin-left: 20px;
     border: #ECE8E8 solid 1px;
-    font-size: 36px;
+    border-radius: 10px;
+    font-size: 34px;
     font-weight: 100;
     text-align: right;
+    background-color: #f6f9f6;
+    padding-right: 10px;
 }
 
 .résultat {
-    width: 265px;
-    height: 25px;
+    width: 260px;
+    height: 35px;
     margin-left: 20px;
     border: #ECE8E8 solid 1px;
-
+    font-size: 34px;
+    font-style: oblique;
+    font-weight: 100;
+    text-align: right;
+    background-color: rgb(250, 252, 251);
+    padding-right: 10px;
+    border-radius: 10px;
 }
 
 .select {
-    border: 0.5px solid black;
+    border: none;
     margin-top: 6px;
+    box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
 
 }
 
@@ -72,7 +81,7 @@ button:active {
     transform: scale(0.9) rotate(5deg);
 }
 
-#c5l7 {
+#btnEqual {
     background-color: #fc4e03ab;
 }
 
@@ -99,7 +108,6 @@ button:active {
     border: none;
     margin-bottom: 6px;
     margin-left: 5px;
-
     box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.75);
 
 }

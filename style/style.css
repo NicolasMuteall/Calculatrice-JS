@@ -18,15 +18,13 @@ body {
     margin-top: 100px;
     width: 360px;
     height: 496px;
-    border: solid black 1px;
+    border: solid rgb(188, 186, 186) 20px;
     background-color: #ECE8E8;
     border-radius: 5px;
     box-shadow: 10px 10px 25px -4px rgba(0, 0, 0, 0.75);
     /*commentaire a la con!!*/
 
 }
-
-
 
 #header {
     margin-top: 6px;
@@ -36,27 +34,34 @@ body {
 
 
 .col1 {
-    width: 265px;
-    height: 44px;
+    width: 260px;
+    height: 35px;
     margin-left: 20px;
     border: #ECE8E8 solid 1px;
-    font-size: 36px;
+    font-size: 34px;
     font-weight: 100;
     text-align: right;
-
+    background-color: lightgreen;
+    padding-right: 10px;
 }
 
 .résultat {
-    width: 265px;
-    height: 25px;
+    width: 260px;
+    height: 35px;
     margin-left: 20px;
     border: #ECE8E8 solid 1px;
+    font-size: 34px;
+
+    font-weight: 100;
+    text-align: right;
+    background-color: aquamarine;
+    padding-right: 10px;
 }
 
 .select {
-    border: 0.5px solid black;
+    border: none;
     margin-top: 6px;
-
+    box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
 }
 
 button {
@@ -78,7 +83,7 @@ button:active {
 
 
 
-#c4l6 {
+#btnEqual {
     background-color: #fc4e03ab;
 }
 
