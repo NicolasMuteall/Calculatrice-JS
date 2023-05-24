@@ -55,6 +55,14 @@ const btnLn = document.getElementById("btnLn");
 const btnPi = document.getElementById("btnPi");
 const btnE = document.getElementById("btnE");
 
+/*-----------------------------------------------------------------------------------------------------*/
+
+function disableInput() {
+  inputCalc.readOnly = true;
+  inputResult.readOnly = true;
+}
+disableInput();
+
 function Clear() {
     btnC.onclick = function () {
         inputCalc.value = "";
@@ -76,8 +84,9 @@ DeleteLastChar();
 function AddNumber(btn, content) {
   btn.onclick = function () {
     inputCalc.value += content;
-    console.log(inputCalc.value);
-  };
+    /*console.log(inputCalc.value);*/
+  }
+
 }
 AddNumber(btn0, 0);
 AddNumber(btn1, 1);
@@ -106,14 +115,56 @@ function AddOperator(btn, operator) {
         }
     };
 }
-AddOperator(btnAdd, "+");
-AddOperator(btnSubstract, "-");
-AddOperator(btnDivide, "/");
-AddOperator(btnMultiply, "*");
-AddOperator(btnComma, ".");
+
+AddOperator(btnAdd, '+');
+AddOperator(btnSubstract, '-');
+AddOperator(btnDivide, '/');
+AddOperator(btnMultiply, '*');
+AddOperator(btnComma, '.');
+AddOperator(btnPourcent, '%');
 
 function result() {
+
   btnEqual.onclick = function () {
+
+
+    /*-----------------------------------NICOLAS---------------------------------------------*/
+    let chain = inputCalc.value;
+    let chainDivide = chain.split(/[-+*/]/);
+    let regEx = /^[0-9]+$/;
+
+    console.log(chainDivide);
+    let tabTrueFalse = [];
+    for (i = 0; i < chainDivide.length; i++) {
+
+      function OnlyNumber(testChain) {
+        tabTrueFalse.push(regEx.test(testChain));
+      }
+      OnlyNumber(chainDivide[i]);
+    }
+    console.log(tabTrueFalse);
+    console.log(tabTrueFalse.includes(false));
+
+    if (tabTrueFalse.includes(false) === false) {
+      let result = eval(inputCalc.value);
+      console.log(result);
+      inputResult.value = result;
+    } else {
+      for (i = 0; i < chainDivide.length; i++) {
+
+        if (regEx.test(chainDivide[i]) === false) {
+          console.log(chainDivide[i]);
+        }
+
+      }
+    }
+  }
+
+  /*-----------------------------------------------------------------------------------------*/
+  let result = eval(inputCalc.value);
+  console.log(result);
+  inputResult.value = result;
+
     /* Fred Debut*/
 
     function calculerLogarithme() {
@@ -146,5 +197,6 @@ function result() {
     };
   }
   calculerLn();
+
 }
 result();
