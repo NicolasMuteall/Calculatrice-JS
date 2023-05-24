@@ -1,20 +1,3 @@
-let rowMemory = ["MC", "MR", "M+", "M-", "MS"];
-
-const tableCalculator = document.getElementById("tableCalc");
-
-function CreateMemoryLine() {
-  let memoryLine = document.createElement("tr");
-  memoryLine.setAttribute("id", "memoryLine");
-  tableCalc.appendChild(memoryLine);
-
-  for (i = 0; i < rowMemory.length; i++) {
-    let memoryCell = document.createElement("td");
-    memoryLine.appendChild(memoryCell);
-    memoryCell.innerHTML += rowMemory[i];
-  }
-}
-CreateMemoryLine();
-
 function fnPi() {
   return Math.PI;
 }
