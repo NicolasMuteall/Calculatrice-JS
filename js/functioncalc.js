@@ -20,35 +20,35 @@ CreateMemoryLine();
 const inputCalc = document.getElementById("inputCalc");
 const inputResult = document.getElementById("inputResult");
 
-const btnPourcent = document.getElementById("c1l1");
-const btnCE = document.getElementById("c2l1");
-const btnC = document.getElementById("c3l1");
-const btnDelete = document.getElementById("c4l1");
+const btnPourcent = document.getElementById("btnPourcent");
+const btnCE = document.getElementById("btnCE");
+const btnC = document.getElementById("btnC");
+const btnDelete = document.getElementById("btnDelete");
 
-const btn1x = document.getElementById("c1l2");
-const btnX2 = document.getElementById("c2l2");
-const btnRacinex = document.getElementById("c3l2");
-const btnDivision = document.getElementById("c4l2");
+const btnInverse = document.getElementById("btnInverse");
+const btnSquare = document.getElementById("btnSquare");
+const btnSquareRoot = document.getElementById("btnSquareRoot");
+const btnDivide = document.getElementById("btnDivide");
 
-const btn7 = document.getElementById("c1l3");
-const btn8 = document.getElementById("c2l3");
-const btn9 = document.getElementById("c3l3");
-const btnMultiplicate = document.getElementById("c4l3");
+const btn7 = document.getElementById("btn7");
+const btn8 = document.getElementById("btn8");
+const btn9 = document.getElementById("btn9");
+const btnMultiply = document.getElementById("btnMultiply");
 
-const btn4 = document.getElementById("c1l4");
-const btn5 = document.getElementById("c2l4");
-const btn6 = document.getElementById("c3l4");
-const btnSoustraction = document.getElementById("c4l4");
+const btn4 = document.getElementById("btn4");
+const btn5 = document.getElementById("btn5");
+const btn6 = document.getElementById("btn6");
+const btnSoustraction = document.getElementById("btnSubstract");
 
-const btn1 = document.getElementById("c1l5");
-const btn2 = document.getElementById("c2l5");
-const btn3 = document.getElementById("c3l5");
-const btnAddition = document.getElementById("c4l5");
+const btn1 = document.getElementById("btn1");
+const btn2 = document.getElementById("btn2");
+const btn3 = document.getElementById("btn3");
+const btnAdd = document.getElementById("btnAdd");
 
-const btnPlusMinus = document.getElementById("c1l6");
-const btn0 = document.getElementById("c2l6");
-const btnComma = document.getElementById("c3l6");
-const btnResult = document.getElementById("c4l6");
+const btnChangeSign = document.getElementById("btnChangeSign");
+const btn0 = document.getElementById("btn0");
+const btnComma = document.getElementById("btnComma");
+const btnEqual = document.getElementById("btnEqual");
 
 function Clear() {
   btnC.onclick = function () {
@@ -98,14 +98,14 @@ function AddOperator(btn, operator) {
     }
   }
 }
-AddOperator(btnAddition, '+');
-AddOperator(btnSoustraction, '-');
-AddOperator(btnDivision, '/');
-AddOperator(btnMultiplicate, 'x');
+AddOperator(btnAdd, '+');
+AddOperator(btnSubstract, '-');
+AddOperator(btnDivide, '/');
+AddOperator(btnMultiply, '*');
 AddOperator(btnComma, '.');
 
 function result() {
-  btnResult.onclick = function () {
+  btnEqual.onclick = function () {
     let result = eval(inputCalc.value);
     console.log(result);
     inputResult.value = result;
