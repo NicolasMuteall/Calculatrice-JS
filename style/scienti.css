@@ -65,7 +65,7 @@ button:active {
 }
 
 #c5l7 {
-    background-color: hwb(33 1% 1% / 0.573);
+    background-color: #fc4e03ab;
 }
 
 #tableCalc {
@@ -89,7 +89,7 @@ button:active {
     height: 45px;
     border-radius: 25px;
     border: none;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     margin-left: 5px;
 
     box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.75);
