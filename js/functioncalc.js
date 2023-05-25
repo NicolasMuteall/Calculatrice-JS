@@ -3,15 +3,15 @@ let rowMemory = ["MC", "MR", "M+", "M-", "MS"];
 const tableCalculator = document.getElementById("tableCalc");
 
 function CreateMemoryLine() {
-    let memoryLine = document.createElement("tr");
-    memoryLine.setAttribute("id", "memoryLine");
-    tableCalc.appendChild(memoryLine);
+  let memoryLine = document.createElement("tr");
+  memoryLine.setAttribute("id", "memoryLine");
+  tableCalc.appendChild(memoryLine);
 
-    for (i = 0; i < rowMemory.length; i++) {
-        let memoryCell = document.createElement("td");
-        memoryLine.appendChild(memoryCell);
-        memoryCell.innerHTML += rowMemory[i];
-    }
+  for (i = 0; i < rowMemory.length; i++) {
+    let memoryCell = document.createElement("td");
+    memoryLine.appendChild(memoryCell);
+    memoryCell.innerHTML += rowMemory[i];
+  }
 }
 CreateMemoryLine();
 
@@ -64,10 +64,10 @@ function disableInput() {
 disableInput();
 
 function Clear() {
-    btnC.onclick = function () {
-        inputCalc.value = "";
-        inputResult.value = "";
-    };
+  btnC.onclick = function () {
+    inputCalc.value = "";
+    inputResult.value = "";
+  };
 }
 Clear();
 
@@ -76,7 +76,7 @@ function DeleteLastChar() {
     let chain = inputCalc.value;
     let newChain = chain.slice(0, -1);
     inputCalc.value = newChain;
-    console.log(newChain);
+    // console.log(newChain);
   };
 }
 DeleteLastChar();
@@ -84,9 +84,7 @@ DeleteLastChar();
 function AddNumber(btn, content) {
   btn.onclick = function () {
     inputCalc.value += content;
-    /*console.log(inputCalc.value);*/
-  }
-
+  };
 }
 AddNumber(btn0, 0);
 AddNumber(btn1, 1);
@@ -98,52 +96,48 @@ AddNumber(btn6, 6);
 AddNumber(btn7, 7);
 AddNumber(btn8, 8);
 AddNumber(btn9, 9);
-AddNumber(btnLog);
-// AddNumber(btnLn, Math.);
+//  AddNumber(btnLog);
+//  AddNumber(btnLn, Math.);
 
 AddNumber(btnPi, Math.PI);
 AddNumber(btnE, Math.E);
 
 function AddOperator(btn, operator) {
-    btn.onclick = function () {
-        let chain = inputCalc.value;
-        let lastChart = chain.charAt(chain.length - 1);
-        /*console.log(lastChart);*/
+  btn.onclick = function () {
+    let chain = inputCalc.value;
+    let lastChart = chain.charAt(chain.length - 1);
+    /*console.log(lastChart);*/
 
-        if (lastChart !== operator && lastChart !== "") {
-            inputCalc.value += operator;
-        }
-    };
+    if (lastChart !== operator && lastChart !== "") {
+      inputCalc.value += operator;
+    }
+  };
 }
 
-AddOperator(btnAdd, '+');
-AddOperator(btnSubstract, '-');
-AddOperator(btnDivide, '/');
-AddOperator(btnMultiply, '*');
-AddOperator(btnComma, '.');
-AddOperator(btnPourcent, '%');
+AddOperator(btnAdd, "+");
+AddOperator(btnSubstract, "-");
+AddOperator(btnDivide, "/");
+AddOperator(btnMultiply, "*");
+AddOperator(btnComma, ".");
+AddOperator(btnPourcent, "%");
 
 function result() {
-
   btnEqual.onclick = function () {
-
-
     /*-----------------------------------NICOLAS---------------------------------------------*/
     let chain = inputCalc.value;
     let chainDivide = chain.split(/[-+*/]/);
     let regEx = /^[0-9]+$/;
 
-    console.log(chainDivide);
+    // console.log(chainDivide);
     let tabTrueFalse = [];
     for (i = 0; i < chainDivide.length; i++) {
-
       function OnlyNumber(testChain) {
         tabTrueFalse.push(regEx.test(testChain));
       }
       OnlyNumber(chainDivide[i]);
     }
-    console.log(tabTrueFalse);
-    console.log(tabTrueFalse.includes(false));
+    // console.log(tabTrueFalse);
+    // console.log(tabTrueFalse.includes(false));
 
     if (tabTrueFalse.includes(false) === false) {
       let result = eval(inputCalc.value);
@@ -151,52 +145,78 @@ function result() {
       inputResult.value = result;
     } else {
       for (i = 0; i < chainDivide.length; i++) {
-
         if (regEx.test(chainDivide[i]) === false) {
           console.log(chainDivide[i]);
         }
-
       }
     }
-  }
-
-  /*-----------------------------------------------------------------------------------------*/
-  let result = eval(inputCalc.value);
-  console.log(result);
-  inputResult.value = result;
-
-    /* Fred Debut*/
-
-    function calculerLogarithme() {
-      let btnLog = document.getElementById("btnLog");
-      btnLog.onclick = function () {
-        // Récupérer la valeur de l'entrée de la calculatrice
-        let input = document.getElementById("inputCalc").value;
-
-        // Calculer le logarithme en base 10 de la valeur
-        let resultat = Math.log10(input);
-
-        // Afficher le résultat dans l'élément d'affichage de la calculatrice
-        document.getElementById("inputResult").innerHTML =
-          "log(" + input + ") = " + resultat;
-      };
-    }
-    calculerLogarithme();
-
-    let result = eval(inputCalc.value);
-    console.log(result);
-    inputResult.value = result;
   };
-
-  function calculerLn() {
-    btnLn.onclick = function () {
-      let input = document.getElementById("inputCalc").value;
-      let resultat = Math.log(input);
-      document.getElementById("inputResult").innerHTML =
-        "btnLn(" + input + ") = " + resultat;
-    };
-  }
-  calculerLn();
-
 }
 result();
+
+// Récupérer le bouton de bascule
+
+function changeCalcul() {
+  let button = document.getElementById("Slc");
+  let btnStd = document.getElementById("btnStd");
+  let btnSci = document.getElementById("btnSci");
+
+  if (button.textContent === "Sci") {
+    button.textContent = "Std";
+    btnStd.style.display = "block";
+    btnSci.style.display = "none";
+  } else if (button.textContent === "Std") {
+    button.textContent = "Sci";
+    btnStd.style.display = "none";
+    btnSci.style.display = "block";
+  }
+}
+
+//  function calculerLogarithme() {
+//   let btnLog = document.getElementById("btnLog");
+//   display.value = Math.log10(display.value);
+//   button.addEventListener("click", function () {
+//     if (button.textContent != "btnLog"){
+//      display.value += button.textContent;
+//    } else if (button.textContent === "btnLog")
+//     }
+//     log();
+//   )
+// };
+
+/*-----------------------------------------------------------------------------------------*/
+// let result = eval(inputCalc.value);
+// console.log(result);
+// inputResult.value = result;
+
+/* Fred Debut*/
+
+// function calculerLogarithme() {
+//   let btnLog = document.getElementById("btnLog");
+//   btnLog.onclick = function () {
+//     // Récupérer la valeur de l'entrée de la calculatrice
+//     let input = document.getElementById("inputCalc").value;
+
+//     // Calculer le logarithme en base 10 de la valeur
+//     let resultat = Math.log10(input);
+
+//     // Afficher le résultat dans l'élément d'affichage de la calculatrice
+//     document.getElementById("inputResult").innerHTML =
+//       "log(" + input + ") = " + resultat;
+//   };
+// }
+// calculerLogarithme();
+
+// let result = eval(inputCalc.value);
+// console.log(result);
+// inputResult.value = result;
+
+// function calculerLn() {
+//   btnLn.onclick = function () {
+//     let input = document.getElementById("inputCalc").value;
+//     let resultat = Math.log(input);
+//     document.getElementById("inputResult").innerHTML =
+//       "btnLn(" + input + ") = " + resultat;
+//   };
+// }
+// calculerLn();
