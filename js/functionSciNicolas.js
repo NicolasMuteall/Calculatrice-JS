@@ -57,6 +57,11 @@ const btnPi = document.getElementById("btnPi");
 const btnE = document.getElementById("btnE");
 const btnAbs = document.getElementById("btnAbs");
 const btnExp = document.getElementById("btnExp");
+const btnFactorial = document.getElementById("btnFactorial");
+
+const btnMod = document.getElementById("btnMod");
+const btnXPowerY = document.getElementById("btnXPowerY");
+
 
 const btnMc = document.getElementById("memoryCell0");
 const btnMr = document.getElementById("memoryCell1");
@@ -172,6 +177,8 @@ AddOperator(btnDivide, ' / ');
 AddOperator(btnMultiply, ' * ');
 AddOperator(btnComma, '.');
 AddOperator(btnPourcent, '%');
+AddOperator(btnMod, 'mod');
+AddOperator(btnXPowerY, '^');
 
 
 btnPourcent.onclick = function () {
@@ -252,6 +259,53 @@ btnExp.onclick = function () {
     inputCalc.value = contentTab;
 }
 
+btnLog.onclick = function () {
+    let chain = inputCalc.value;
+    let chainDivide = chain.split(" ");
+    console.log(chainDivide);
+    let lastElement = chainDivide[chainDivide.length - 1];
+    console.log(lastElement);
+    let temp = Math.log10(lastElement);
+    console.log(temp);
+    chainDivide[chainDivide.length - 1] = temp;
+    contentTab = chainDivide.join(" ");
+    inputCalc.value = contentTab;
+}
+
+btnLn.onclick = function () {
+    let chain = inputCalc.value;
+    let chainDivide = chain.split(" ");
+    console.log(chainDivide);
+    let lastElement = chainDivide[chainDivide.length - 1];
+    console.log(lastElement);
+    let temp = Math.log10(lastElement) * Math.LN10;
+    console.log(temp);
+    chainDivide[chainDivide.length - 1] = temp;
+    contentTab = chainDivide.join(" ");
+    inputCalc.value = contentTab;
+}
+
+btnFactorial.onclick = function () {
+    let chain = inputCalc.value;
+    let chainDivide = chain.split(" ");
+    console.log(chainDivide);
+    let lastElement = chainDivide[chainDivide.length - 1];
+    console.log(lastElement);
+    function fnFactorial(num) {
+        console.log(num);
+        if (num === 0 || num === 1) return 1;
+        for (let i = num - 1; i >= 1; i--) {
+            num = num * i;
+        }
+        return num;
+    }
+    let temp = fnFactorial(lastElement);
+    console.log(temp);
+    chainDivide[chainDivide.length - 1] = temp;
+    contentTab = chainDivide.join(" ");
+    inputCalc.value = contentTab;
+}
+
 btnChangeSign.onclick = function () {
     function plusMinus() {
         if (inputCalc.value.charAt(0) === "-") {
@@ -267,44 +321,36 @@ function result() {
 
     btnEqual.onclick = function () {
 
-        let result = eval(inputCalc.value);
-        console.log(result);
-        inputResult.value = result;
+        let inputContent = inputCalc.value;
+        let newInputContent = inputContent.replace("mod", "%");
+        console.log(newInputContent);
 
-        /*-----------------------------------NICOLAS---------------------------------------------*/
-        //let chain = inputCalc.value;
-        //let chainDivide = chain.split(/[-+*/]/);
-        /*let regEx = /^[0-9]+$/;
-
+        let chainDivide = newInputContent.split(" ");
         console.log(chainDivide);
-        let tabTrueFalse = [];
+
         for (i = 0; i < chainDivide.length; i++) {
 
-            function OnlyNumber(testChain) {
-                tabTrueFalse.push(regEx.test(testChain));
+            let estPresent = chainDivide[i].includes("^");
+            console.log(estPresent);
+
+            if (estPresent) {
+                powerChain = chainDivide[i].split("^");
+                console.log(powerChain);
+
+                chainDivide[i] = Math.pow(powerChain[0], powerChain[1]);
+                console.log(chainDivide[i]);
+
             }
-            OnlyNumber(chainDivide[i]);
+
         }
-        console.log(tabTrueFalse);
-        console.log(tabTrueFalse.includes(false));
+        console.log(chainDivide);
+        contentTab = chainDivide.join(" ");
+        console.log(contentTab);
 
-        if (tabTrueFalse.includes(false) === false) {
-            let result = eval(inputCalc.value);
-            console.log(result);
-            inputResult.value = result;
-        } else {
-            for (i = 0; i < chainDivide.length; i++) {
-
-                if (regEx.test(chainDivide[i]) === false) {
-                    console.log(chainDivide[i]);
-                }
-
-            }
-        }*/
-
+        let result = eval(contentTab);
+        console.log(result);
+        inputResult.value = result;
     }
-
-    /*-----------------------------------------------------------------------------------------*/
 
 }
 result();
