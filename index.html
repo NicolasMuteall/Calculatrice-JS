@@ -17,67 +17,56 @@
 
     <div id="container">
         <button class="select" onclick="toggleInterface()">Sci</button>
-        <input type="text" id="result" readonly>
-
-
-
-        <!-- <div class="row">
-                <input id="inputCalc" class="col1">
-                <!-- <input id="inputResult" class="résultat"> -->
-        <!--</div>-->
-
-
-
+        <input type="text" id="resultat" readonly>
 
         <table id="tableCalc"></table>
 
-
         <div id="btnStd">
             <div class="row">
-                <div class="key gris" onclick="appendToResult('%')">%</div>
-                <div class="key gris" onclick="clearResult('CE')">CE</div>
-                <div class="key gris" onclick="clearResult('C')">C</div>
-                <div class="key gris" onclick="appendToResult('X')">x</div>
+                <div id="btnPourcent" class="key gris" onclick="appendToResult('%')">%</div>
+                <div id="btnCe" class="key gris" onclick="clearResult('CE')">CE</div>
+                <div id="btnC" class="key gris" onclick="clearResult('C')">C</div>
+                <div id="btnDelete" class="key gris" onclick="appendToResult('X')">x</div>
             </div>
             <div class="row">
-                <div class="key gris" onclick="appendToResult('1/x')">1/x</div>
-                <div class="key gris" onclick="appendToResult('x2')">x2</div>
-                <div class="key gris" onclick="appendToResult('Vx')">Vx</div>
-                <div class="key orange" onclick="appendToResult('/')">/</div>
+                <div id="btnInverse" class="key gris" onclick="appendToResult('1/x')">1/x</div>
+                <div id="btnSquare" class="key gris" onclick="appendToResult('x2')">x2</div>
+                <div id="btnSquareRoot" class="key gris" onclick="appendToResult('Vx')">Vx</div>
+                <div id="btnDivide" class="key orange" onclick="appendToResult('/')">/</div>
             </div>
             <div class="row">
-                <div class="key noir" onclick="appendToResult('7')">7</div>
-                <div class="key noir" onclick="appendToResult('8')">8</div>
-                <div class="key noir" onclick="appendToResult('9')">9</div>
-                <div class="key orange" onclick="appendToResult('X')">X</div>
+                <div id="btn7" class="key noir" onclick="appendToResult('7')">7</div>
+                <div id="btn8" class="key noir" onclick="appendToResult('8')">8</div>
+                <div id="btn9" class="key noir" onclick="appendToResult('9')">9</div>
+                <div id="btnMultiply" class="key orange" onclick="appendToResult('X')">X</div>
             </div>
             <div class="row">
-                <div class="key noir" onclick="appendToResult('4')">4</div>
-                <div class="key noir" onclick="appendToResult('5')">5</div>
-                <div class="key noir" onclick="appendToResult('6')">6</div>
-                <div class="key orange" onclick="appendToResult('-')">-</div>
+                <div id="btn4" class="key noir" onclick="appendToResult('4')">4</div>
+                <div id="btn5" class="key noir" onclick="appendToResult('5')">5</div>
+                <div id="btn6" class="key noir" onclick="appendToResult('6')">6</div>
+                <div id="btnSubstract" class="key orange" onclick="appendToResult('-')">-</div>
             </div>
             <div class="row">
-                <div class="key noir" onclick="appendToResult('1')">1</div>
-                <div class="key noir" onclick="appendToResult('2')">2</div>
-                <div class="key noir" onclick="appendToResult('3')">3</div>
-                <div class="key orange" onclick="appendToResult('+')">+</div>
+                <div id="btn1" class="key noir" onclick="appendToResult('1')">1</div>
+                <div id="btn2" class="key noir" onclick="appendToResult('2')">2</div>
+                <div id="btn3" class="key noir" onclick="appendToResult('3')">3</div>
+                <div id="btnAdd" class="key orange" onclick="appendToResult('+')">+</div>
             </div>
             <div class="row">
-                <div class="key noir" onclick="appendToResult('+/-')">+/-</div>
-                <div class="key noir" onclick="appendToResult('0')">0</div>
-                <div class="key noir" onclick="appendToResult(',')">,</div>
-                <div class="key orange" onclick="calculate()">=</div>
+                <div id="btnChangeSign" class="key noir" onclick="appendToResult('+/-')">+/-</div>
+                <div id="btn0" class="key noir" onclick="appendToResult('0')">0</div>
+                <div id="btnComma" class="key noir" onclick="appendToResult(',')">,</div>
+                <div id="btnEqual" class="key orange" onclick="calculate()">=</div>
             </div>
         </div>
 
         <div id="btnSci" style="display: none;">
             <div class="row">
-                <div class="keyS gris" onclick="appendToResult">%</div>
-                <div class="keyS gris" onclick="appendToResult">PI</div>
-                <div class="keyS gris" onclick="appendToResult">e</div>
-                <div class="keyS gris" onclick="appendToResult">C</div>
-                <div class="keyS gris" onclick="appendToResult">x</div>
+                <div id="btnPoucent" class="keyS gris" onclick="appendToResult">%</div>
+                <div id="btnPi" class="keyS gris" onclick="appendToResult">PI</div>
+                <div id="btnE" class="keyS gris" onclick="appendToResult">e</div>
+                <div id="btnC" class="keyS gris" onclick="appendToResult">C</div>
+                <div id="btnDelete" class="keyS gris" onclick="appendToResult">x</div>
 
             </div>
             <div class="row">
@@ -97,29 +86,29 @@
             </div>
             <div class="row">
                 <div class="keyS gris" onclick="appendToResult">xy</div>
-                <div class="keyS noir" onclick="appendToResult">7</div>
-                <div class="keyS noir" onclick="appendToResult">8</div>
-                <div class="keyS noir" onclick="appendToResult">9</div>
-                <div class="keyS orange" onclick="appendToResult('X')">X</div>
+                <div id="btn7" class="keyS noir" onclick="appendToResult">7</div>
+                <div id="btn8" class="keyS noir" onclick="appendToResult">8</div>
+                <div id=btn9" class="keyS noir" onclick="appendToResult">9</div>
+                <div id="btnMultiply" class="keyS orange" onclick="appendToResult('X')">X</div>
             </div>
             <div class="row">
                 <div class="keyS gris" onclick="appendToResult">10x</div>
-                <div class="keyS noir" onclick="appendToResult">4</div>
-                <div class="keyS noir" onclick="appendToResult">5</div>
-                <div class="keyS noir" onclick="appendToResult">6</div>
+                <div id="btn4" class="keyS noir" onclick="appendToResult">4</div>
+                <div id="btn5" class="keyS noir" onclick="appendToResult">5</div>
+                <div id="btnS6" class="keyS noir" onclick="appendToResult">6</div>
                 <div class="keyS orange" onclick="appendToResult('-')">-</div>
             </div>
             <div class="row">
                 <div class="keyS gris" onclick="appendToResult">log</div>
-                <div class="keyS noir" onclick="appendToResult">1</div>
-                <div class="keyS noir" onclick="appendToResult">2</div>
-                <div class="keyS noir" onclick="appendToResult">3</div>
+                <div id="btn1" class="keyS noir" onclick="appendToResult">1</div>
+                <div id="btn2" class="keyS noir" onclick="appendToResult">2</div>
+                <div id="btn3" class="keyS noir" onclick="appendToResult">3</div>
                 <div class="keyS orange" onclick="appendToResult('+')">+</div>
             </div>
             <div class="row">
                 <div class="keyS gris" onclick="appendToResult">ln</div>
                 <div class="keyS noir" onclick="appendToResult">+/-</div>
-                <div class="keyS noir" onclick="appendToResult">0</div>
+                <div id="btn0" class="keyS noir" onclick="appendToResult">0</div>
                 <div class="keyS noir" onclick="appendToResult">,</div>
                 <div class="keyS orange" onclick="calculate()">=</div>
             </div>
@@ -132,21 +121,59 @@
 
 
     <script>
+        let rowMemory = ["MC", "MR", "M+", "M-", "MS"];
+
+        const tableCalculator = document.getElementById("tableCalc");
+        function appendToResult(value) {
+            document.getElementById('resultat').value += value;
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const scientificButtons = document.getElementsByClassName('keyS');
+
+            for (let i = 0; i < scientificButtons.length; i++) {
+                scientificButtons[i].addEventListener('click', function () {
+                    let value = scientificButtons[i].textContent;
+                    appendToResult(value);
+                });
+            }
+        });
+
+        function CreateMemoryLine() {
+            let memoryLine = document.createElement("tr");
+            memoryLine.setAttribute("id", "memoryLine");
+            tableCalc.appendChild(memoryLine);
+
+            for (i = 0; i < rowMemory.length; i++) {
+                let memoryCell = document.createElement("td");
+                memoryLine.appendChild(memoryCell);
+                memoryCell.innerHTML += rowMemory[i];
+            }
+        }
+        CreateMemoryLine();
+
         let isStandard = true; // Vérifie l'interface actuelle
 
         function appendToResult(value) {
-            document.getElementById('result').value += value;
+            document.getElementById('resultat').value += value;
         }
 
         function calculate() {
-            let result = document.getElementById('result').value;
-            let calculatedResult = eval(result);
-            document.getElementById('result').value = calculatedResult;
+            let resultat = document.getElementById('resultat').value;
+            let calculatedResult = eval(resultat);
+            document.getElementById('resultat').value = calculatedResult;
+        }
+        calculate();
+
+        function clearResult(type) {
+            if (type === 'C') {
+                document.getElementById("resultat").value = "0";
+            } else if (type === 'C') {
+                document.getElementById("resultat").value = "0";
+            }
         }
 
-        function clearResult() {
-            document.getElementById('result').value = '';
-        }
+
 
         function toggleInterface() {
             let standardInterface = document.getElementById('btnStd');
@@ -162,8 +189,113 @@
                 isStandard = true;
             }
         }
+
+
+
+        function Clear() {
+            btnC.onclick = function () {
+                resultat.value = "";
+                resultat.value = "";
+                resultat.value = "";
+            };
+        }
+        Clear();
+
+        function DeleteLastChar() {
+            btnDelete.onclick = function () {
+                let chain = resultat.value;
+                let newChain = chain.slice(0, -1);
+                resultat.value = newChain;
+                // console.log(newChain);
+            };
+        }
+        DeleteLastChar();
+
+
+        function appendToResult(value) {
+            const resultatElement = document.getElementById('resultat');
+
+            if (value === '=') {
+                // Évaluer l'expression mathématique et afficher le résultat
+                const expression = resultatElement.value;
+                const resultat = eval(expression);
+                resultatElement.value = resultat;
+            } else {
+                // Vérifier si la valeur existe déjà dans l'élément d'affichage
+                const currentValue = resultatElement.value;
+                if (currentValue.slice(-1) === value) {
+                    return; // Ne rien faire si la valeur est déjà présente
+                }
+
+                // Ajouter la valeur à l'élément d'affichage
+                resultatElement.value += value;
+            }
+        }
+
+        function calculate() {
+            var input = document.getElementById("resultat");
+            var expression = input.value;
+
+            // Remplacer le caractère 'X' par '*' pour la multiplication
+            expression = expression.replace(/X/g, '*');
+
+            var result = eval(expression);
+
+            if (result === undefined) {
+                input.value = "0";
+            } else {
+                input.value = result;
+            }
+        }
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const scientificButtons = document.getElementsByClassName('keyS');
+
+            for (let i = 0; i < scientificButtons.length; i++) {
+                scientificButtons[i].addEventListener('click', function () {
+                    let value = scientificButtons[i].textContent;
+                    appendToResult(value);
+                });
+            }
+        });
+        $("#equals").click(function () {
+            if ($("#standard").hasClass("active")) {
+                calculateStandard();
+            } else {
+                calculateScientific();
+            }
+        });
+
+        // Fonction pour effectuer le calcul (partie standard)
+        function calculateStandard() {
+            var result = eval($("#result").val());
+            $("#result").val(result);
+        }
+
+        // Fonction pour effectuer le calcul (partie scientifique)
+        function calculateScientific() {
+            var result = eval($("#scientificResult").val());
+            $("#scientificResult").val(result);
+        }
+
+        function ClearScientific() {
+            btnC.onclick = function () {
+                resultat.value = "";
+            };
+        }
+        ClearScientific();
+
+        function DeleteLastCharScientific() {
+            btnDelete.onclick = function () {
+                let chain = resultat.value;
+                let newChain = chain.slice(0, -1);
+                resultat.value = newChain;
+            };
+        }
+        DeleteLastCharScientific();
     </script>
-    <script src="./js/functioncalc.js"></script>
+    <!-- <script src="./js/functioncalc.js"></script> -->
 </body>
 
 </html>

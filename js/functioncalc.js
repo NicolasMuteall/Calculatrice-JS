@@ -18,45 +18,45 @@ CreateMemoryLine();
 /*--------------------------------------------------------------------------------------------------------------------------*/
 
 const inputCalc = document.getElementById("inputCalc");
-// const inputResult = document.getElementById("inputResult");
+const inputResult = document.getElementById("inputResult");
 
 // const inputCalc1 = document.getElementById("inputCalc1");
 // const inputResult1 = document.getElementById("inputResult");
 
-const btnPourcent = document.getElementById("btnPourcent");
-const btnCE = document.getElementById("btnCE");
-const btnC = document.getElementById("btnC");
-const btnDelete = document.getElementById("btnDelete");
+// const btnPourcent = document.getElementById("btnPourcent");
+// const btnCE = document.getElementById("btnCE");
+// const btnC = document.getElementById("btnC");
+// const btnDelete = document.getElementById("btnDelete");
 
-const btnInverse = document.getElementById("btnInverse");
-const btnSquare = document.getElementById("btnSquare");
-const btnSquareRoot = document.getElementById("btnSquareRoot");
-const btnDivide = document.getElementById("btnDivide");
+// const btnInverse = document.getElementById("btnInverse");
+// const btnSquare = document.getElementById("btnSquare");
+// const btnSquareRoot = document.getElementById("btnSquareRoot");
+// const btnDivide = document.getElementById("btnDivide");
 
-const btn7 = document.getElementById("btn7");
-const btn8 = document.getElementById("btn8");
-const btn9 = document.getElementById("btn9");
-const btnMultiply = document.getElementById("btnMultiply");
+// const btn7 = document.getElementById("btn7");
+// const btn8 = document.getElementById("btn8");
+// const btn9 = document.getElementById("btn9");
+// const btnMultiply = document.getElementById("btnMultiply");
 
-const btn4 = document.getElementById("btn4");
-const btn5 = document.getElementById("btn5");
-const btn6 = document.getElementById("btn6");
-const btnSoustraction = document.getElementById("btnSubstract");
+// const btn4 = document.getElementById("btn4");
+// const btn5 = document.getElementById("btn5");
+// const btn6 = document.getElementById("btn6");
+// const btnSoustraction = document.getElementById("btnSubstract");
 
-const btn1 = document.getElementById("btn1");
-const btn2 = document.getElementById("btn2");
-const btn3 = document.getElementById("btn3");
-const btnAdd = document.getElementById("btnAdd");
+// const btn1 = document.getElementById("btn1");
+// const btn2 = document.getElementById("btn2");
+// const btn3 = document.getElementById("btn3");
+// const btnAdd = document.getElementById("btnAdd");
 
-const btnChangeSign = document.getElementById("btnChangeSign");
-const btn0 = document.getElementById("btn0");
-const btnComma = document.getElementById("btnComma");
-const btnEqual = document.getElementById("btnEqual");
-const btnLog = document.getElementById("btnLog");
-const btnLn = document.getElementById("btnLn");
+// const btnChangeSign = document.getElementById("btnChangeSign");
+// const btn0 = document.getElementById("btn0");
+// const btnComma = document.getElementById("btnComma");
+// const btnEqual = document.getElementById("btnEqual");
+// const btnLog = document.getElementById("btnLog");
+// const btnLn = document.getElementById("btnLn");
 
-const btnPi = document.getElementById("btnPi");
-const btnE = document.getElementById("btnE");
+// const btnPi = document.getElementById("btnPi");
+// const btnE = document.getElementById("btnE");
 
 /*-----------------------------------------------------------------------------------------------------*/
 
@@ -206,7 +206,7 @@ ClearStandard();
 // Fonction Clear pour la calculatrice scientifique
 function ClearScientific() {
   btnC.onclick = function () {
-    inputCalcScientific.value = "";
+    result.value = "";
   };
 }
 ClearScientific();
@@ -226,7 +226,7 @@ DeleteLastCharStandard();
 // Fonction DeleteLastChar pour la calculatrice scientifique
 function DeleteLastCharScientific() {
   btnDelete.onclick = function () {
-    let chain = inputCalcScientific.value;
+    let chain = result.value;
     let newChain = chain.slice(0, -1);
     inputCalcScientific.value = newChain;
   };
