@@ -6,14 +6,15 @@
 
 }
 
+
 body {
     background-image: url("../—Slidesdocs—handdrawn style blue cute education_a698b5341c.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-#container {
 
+#container {
     margin-left: 730px;
     margin-top: 100px;
     width: 360px;
@@ -22,17 +23,150 @@ body {
     background-color: #ECE8E8;
     border-radius: 20px;
     box-shadow: 10px 10px 25px -4px rgba(0, 0, 0, 0.75);
-    /*commentaire a la con!!*/
-
+    padding: 20px;
 }
 
-#header {
-    margin-top: 6px;
+.row {
     display: flex;
 }
 
+#btnStd {
+    margin-left: -10px;
+}
+
+.key {
+    width: 70px;
+    height: 50px;
+    border: none;
+    border-radius: 25px;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+    font-size: 18px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.75);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+.key:hover {
+    transform: scale(1.1);
+    z-index: 1;
+}
 
 
+.key.gris {
+    background-color: #ACA4A4;
+    color: #333;
+}
+
+.key.orange {
+    background-color: #F08F1C;
+    color: #fff;
+}
+
+.key.noir {
+    background-color: #575656;
+    color: #fff;
+}
+
+
+.select {
+    width: 50px;
+    height: 45px;
+    background-color: #F08F1C;
+    border: none;
+    border-radius: 15px;
+    margin-top: 6px;
+    box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.select:hover {
+    background-color: #ff9c00;
+    color: #fff;
+    width: 55px;
+    height: 45px;
+    border-radius: 100px;
+}
+
+#result {
+    display: flex;
+    width: 260px;
+    height: 35px;
+    margin-left: 70px;
+    margin-top: -40px;
+    border: #ECE8E8 solid 1px;
+    font-size: 34px;
+    font-weight: 100;
+    text-align: right;
+    background-color: rgb(250, 252, 251);
+    padding-right: 10px;
+    border-radius: 10px;
+}
+
+#tableCalc {
+    width: 100%;
+
+
+    cursor: pointer;
+}
+
+#memoryLine {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    cursor: pointer;
+}
+
+#memoryLine :hover {
+    background-color: #575656;
+    color: #ECE8E8;
+}
+
+.keyS {
+    width: 60px;
+    height: 45px;
+    border: none;
+    border-radius: 50px;
+    text-align: center;
+    line-height: 45px;
+    cursor: pointer;
+    font-size: 18px;
+    margin-left: 15px;
+    margin-bottom: 12px;
+    margin-top: 5px;
+    box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.75);
+    /* position: relative; */
+    /* overflow: hidden; */
+    transition: transform 0.3s;
+}
+
+.keyS:hover {
+    transform: scale(1.1);
+    z-index: 1;
+}
+
+
+.keyS.gris {
+    background-color: #ACA4A4;
+}
+
+.keyS.orange {
+    background-color: #F08F1C;
+    color: #fff;
+}
+
+.keyS.noir {
+    background-color: #575656;
+    color: #fff;
+}
+
+/*   
 .col1 {
     width: 260px;
     height: 35px;
@@ -46,7 +180,8 @@ body {
     padding-right: 10px;
 }
 
-.résultat {
+.key {
+    display: flex;
     width: 260px;
     height: 35px;
     margin-left: 20px;
@@ -60,11 +195,9 @@ body {
     border-radius: 10px;
 }
 
-.select {
-    border: none;
-    margin-top: 6px;
-    box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
-}
+
+
+
 
 button {
     width: 50px;
@@ -89,9 +222,7 @@ button:active {
     background-color: #fc4e03ab;
 }
 
-#tableCalc {
-    width: 100%;
-}
+
 
 #memoryLine {
     margin-top: 20px;
@@ -105,17 +236,7 @@ button:active {
     color: #ECE8E8;
 }
 
-.touche {
-    width: 70px;
-    height: 50px;
-    border-radius: 25px;
-    border: none;
-    margin-bottom: 10px;
-    margin-left: 14px;
 
-    box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.75);
-
-}
 
 i {
     width: 23px;
@@ -125,7 +246,7 @@ i {
 #boutons {
     width: 100%;
     /* margin-left: 20px; */
-    margin-top: 10px;
+/* margin-top: 10px;
 
 }
 
@@ -143,9 +264,9 @@ i {
 
 #btnSci {
     display: none;
-}
+} */
 
-#container1 {
+/* #container1 {
 
     margin-left: 730px;
     margin-top: 100px;
@@ -187,15 +308,26 @@ i {
     background-color: rgb(250, 252, 251);
     padding-right: 10px;
     border-radius: 10px;
-}
+} */
 
-.select {
+/* .select {
     border: none;
     margin-top: 6px;
     box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
 
 }
+.touche {
+    width: 70px;
+    height: 50px;
+    border-radius: 25px;
 
+    margin-bottom: 10px;
+    margin-lefborder: none;
+    t: 14px;
+
+    box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.75);
+
+}
 button {
     width: 50px;
     height: 45px;
@@ -231,9 +363,9 @@ button:active {
 #memoryLine :hover {
     background-color: #575656;
     color: #ECE8E8;
-}
+} */
 
-.toucheSci {
+/* .toucheSci {
     width: 15%;
     height: 45px;
     border-radius: 25px;
@@ -267,4 +399,16 @@ i {
 
 .gris {
     background-color: #ACA4A4;
-}
+} */
+
+/* .rowA,
+.rowB {
+    display: none;
+} */
+
+/* #result {
+    width: 200px;
+    height: 30px;
+    text-align: right;
+    font-size: 18px;
+} */

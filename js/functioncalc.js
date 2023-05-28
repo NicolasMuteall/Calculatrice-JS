@@ -18,7 +18,10 @@ CreateMemoryLine();
 /*--------------------------------------------------------------------------------------------------------------------------*/
 
 const inputCalc = document.getElementById("inputCalc");
-const inputResult = document.getElementById("inputResult");
+// const inputResult = document.getElementById("inputResult");
+
+// const inputCalc1 = document.getElementById("inputCalc1");
+// const inputResult1 = document.getElementById("inputResult");
 
 const btnPourcent = document.getElementById("btnPourcent");
 const btnCE = document.getElementById("btnCE");
@@ -59,14 +62,16 @@ const btnE = document.getElementById("btnE");
 
 function disableInput() {
   inputCalc.readOnly = true;
-  inputResult.readOnly = true;
+
+  // inputResult.readOnly = true;
 }
 disableInput();
 
 function Clear() {
   btnC.onclick = function () {
     inputCalc.value = "";
-    inputResult.value = "";
+    // inputCalc1.value = "";
+    // inputResult.value = "";
   };
 }
 Clear();
@@ -99,8 +104,8 @@ AddNumber(btn9, 9);
 //  AddNumber(btnLog);
 //  AddNumber(btnLn, Math.);
 
-AddNumber(btnPi, Math.PI);
-AddNumber(btnE, Math.E);
+// AddNumber(btnPi, Math.PI);
+// AddNumber(btnE, Math.E);
 
 function AddOperator(btn, operator) {
   btn.onclick = function () {
@@ -142,7 +147,7 @@ function result() {
     if (tabTrueFalse.includes(false) === false) {
       let result = eval(inputCalc.value);
       console.log(result);
-      inputResult.value = result;
+      inputCalc.value = result;
     } else {
       for (i = 0; i < chainDivide.length; i++) {
         if (regEx.test(chainDivide[i]) === false) {
@@ -154,69 +159,81 @@ function result() {
 }
 result();
 
-// Récupérer le bouton de bascule
+function calculate() {
+  btnEqual.onclick = function () {
+    let chain = inputCalc.value;
+    let chainDivide = chain.split(/[-+*/]/);
+    let regEx = /^[0-9]+$/;
 
-function changeCalcul() {
-  let button = document.getElementById("Slc");
-  let btnStd = document.getElementById("btnStd");
-  let btnSci = document.getElementById("btnSci");
+    let tabTrueFalse = [];
+    for (let i = 0; i < chainDivide.length; i++) {
+      function onlyNumber(testChain) {
+        tabTrueFalse.push(regEx.test(testChain));
+      }
+      onlyNumber(chainDivide[i]);
+    }
 
-  if (button.textContent === "Sci") {
-    button.textContent = "Std";
-    btnStd.style.display = "block";
-    btnSci.style.display = "none";
-  } else if (button.textContent === "Std") {
-    button.textContent = "Sci";
-    btnStd.style.display = "none";
-    btnSci.style.display = "block";
-  }
+    if (tabTrueFalse.includes(false) === false) {
+      let result = eval(inputCalc.value);
+      inputCalc.value = result;
+    } else {
+      for (let i = 0; i < chainDivide.length; i++) {
+        if (regEx.test(chainDivide[i]) === false) {
+          console.log(chainDivide[i]);
+        }
+      }
+    }
+  };
 }
+calculate();
 
-//  function calculerLogarithme() {
-//   let btnLog = document.getElementById("btnLog");
-//   display.value = Math.log10(display.value);
-//   button.addEventListener("click", function () {
-//     if (button.textContent != "btnLog"){
-//      display.value += button.textContent;
-//    } else if (button.textContent === "btnLog")
-//     }
-//     log();
-//   )
-// };
+// Pour la calculatrice standard
+const inputCalcStandard = document.getElementById("inputCalcStandard");
 
-/*-----------------------------------------------------------------------------------------*/
-// let result = eval(inputCalc.value);
-// console.log(result);
-// inputResult.value = result;
+// Pour la calculatrice scientifique
+const inputCalcScientific = document.getElementById("inputCalcScientific");
 
-/* Fred Debut*/
+// ...
 
-// function calculerLogarithme() {
-//   let btnLog = document.getElementById("btnLog");
-//   btnLog.onclick = function () {
-//     // Récupérer la valeur de l'entrée de la calculatrice
-//     let input = document.getElementById("inputCalc").value;
+// Fonction Clear pour la calculatrice standard
+function ClearStandard() {
+  btnC.onclick = function () {
+    inputCalcStandard.value = "";
+  };
+}
+ClearStandard();
 
-//     // Calculer le logarithme en base 10 de la valeur
-//     let resultat = Math.log10(input);
+// Fonction Clear pour la calculatrice scientifique
+function ClearScientific() {
+  btnC.onclick = function () {
+    inputCalcScientific.value = "";
+  };
+}
+ClearScientific();
 
-//     // Afficher le résultat dans l'élément d'affichage de la calculatrice
-//     document.getElementById("inputResult").innerHTML =
-//       "log(" + input + ") = " + resultat;
-//   };
-// }
-// calculerLogarithme();
+// ...
 
-// let result = eval(inputCalc.value);
-// console.log(result);
-// inputResult.value = result;
+// Fonction DeleteLastChar pour la calculatrice standard
+function DeleteLastCharStandard() {
+  btnDelete.onclick = function () {
+    let chain = inputCalcStandard.value;
+    let newChain = chain.slice(0, -1);
+    inputCalcStandard.value = newChain;
+  };
+}
+DeleteLastCharStandard();
 
-// function calculerLn() {
-//   btnLn.onclick = function () {
-//     let input = document.getElementById("inputCalc").value;
-//     let resultat = Math.log(input);
-//     document.getElementById("inputResult").innerHTML =
-//       "btnLn(" + input + ") = " + resultat;
-//   };
-// }
-// calculerLn();
+// Fonction DeleteLastChar pour la calculatrice scientifique
+function DeleteLastCharScientific() {
+  btnDelete.onclick = function () {
+    let chain = inputCalcScientific.value;
+    let newChain = chain.slice(0, -1);
+    inputCalcScientific.value = newChain;
+  };
+}
+DeleteLastCharScientific();
+
+// ...
+
+// Autres fonctions et événements pour la calculatrice standard et scientifique
+// ...

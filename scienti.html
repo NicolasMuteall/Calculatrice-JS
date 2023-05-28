@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
         integrity="sha384-DfXdzS5ie6b/TXki4Hqh1e8R9D+7AGgB+8RjhmAGf0JYI8YzhJY6zD8tPZHKuhZD" crossorigin="anonymous">
     <link href="style/scienti.css" rel="stylesheet">
-    <script src="./js/functionScient.js"></script>
+
     <title>Calculatrice scientifique</title>
 </head>
 
@@ -16,13 +16,47 @@
     <div id="container1">
         <div id="headerSci">
             <div class="selectionSci">
-                <a href="index.html"><button class="select" type="button">Std</button></a>
+                <button onclick="toggleInterface()">Changer l'interface</button>
             </div>
+            <script>
+                let isStandard = true; // Vérifie l'interface actuelle
+
+                function appendToResult(value) {
+                    document.getElementById('result').value += value;
+                }
+
+                function calculate() {
+                    let result = document.getElementById('result').value;
+                    let calculatedResult = eval(result);
+                    document.getElementById('result').value = calculatedResult;
+                }
+
+                function clearResult() {
+                    document.getElementById('result').value = '';
+                }
+
+                function toggleInterface() {
+                    let standardInterface = document.getElementById('standard');
+                    let scientificInterface = document.getElementById('scientific');
+
+                    if (isStandard) {
+                        standardInterface.style.display = 'none';
+                        scientificInterface.style.display = 'block';
+                        isStandard = false;
+                    } else {
+                        standardInterface.style.display = 'block';
+                        scientificInterface.style.display = 'none';
+                        isStandard = true;
+                    }
+                }
+            </script>
             <div class="row">
                 <input id="inputCalc" class="col1">
-                <input id="inputResult" class="résultat">
+                <!-- <input id="inputResult" class="résultat"> -->
             </div>
         </div>
+
+
 
         <table id="tableCalc"></table>
 
@@ -81,11 +115,10 @@
         </div>
 
 
-    </div>
-    </div>
-    </div>
-    <script src="./js/functioncalc.js"></script>
-    <script src="https://kit.fontawesome.com/a467aaac86.js" crossorigin="anonymous"></script>
+
+        <script src="./js/functioncalc.js"></script>
+        <script src="https://kit.fontawesome.com/a467aaac86.js" crossorigin="anonymous"></script>
+
 </body>
 
-</html> -->
+</html>

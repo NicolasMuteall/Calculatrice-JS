@@ -16,119 +16,153 @@
 
 
     <div id="container">
-        <div id="header">
-            <div class="selection">
-                <button id="Slc" onclick="changeCalcul()" class="select" type="button">Sci</button>
-            </div>
-            <div class="row">
+        <button class="select" onclick="toggleInterface()">Sci</button>
+        <input type="text" id="result" readonly>
+
+
+
+        <!-- <div class="row">
                 <input id="inputCalc" class="col1">
-                <input id="inputResult" class="résultat">
-            </div>
-        </div>
+                <!-- <input id="inputResult" class="résultat"> -->
+        <!--</div>-->
+
+
+
 
         <table id="tableCalc"></table>
+
+
         <div id="btnStd">
-            <div id="boutons">
-                <div class="row1">
-                    <button id="btnPourcent" class="touche gris">%</button>
-                    <button id="btnCE" class="touche gris">CE</button>
-                    <button id="btnC" class="touche gris ">C</button>
-                    <button id="btnDelete" class="touche gris">x</button>
-                </div>
-                <div class="row2">
-                    <button id="btnInverse" class="touche gris">1/x</button>
-                    <button id="btnSquare" class="touche gris">x2</button>
-                    <button id="btnSquareRoot" class="touche gris">Vx</button>
-                    <button id="btnDivide" class="touche orange">/</button>
-                </div>
-                <div class="row3">
-                    <button id="btn7" class="touche noir">7</button>
-                    <button id="btn8" class="touche noir">8</button>
-                    <button id="btn9" class="touche noir">9</i></button>
-                    <button id="btnMultiply" class="touche orange">X</button>
-                </div>
-                <div class="row4">
-                    <button id="btn4" class="touche noir">4</button>
-                    <button id="btn5" class="touche noir">5</button>
-                    <button id="btn6" class="touche noir">6</i></button>
-                    <button id="btnSubstract" class="touche orange">-</button>
-                </div>
-                <div class="row5">
-                    <button id="btn1" class="touche noir">1</button>
-                    <button id="btn2" class="touche noir">2</button>
-                    <button id="btn3" class="touche noir">3</button>
-                    <button id="btnAdd" class=" touche orange">+</button>
-                </div>
-                <div class=" row6">
-                    <button id="btnChangeSign" class="touche noir">+/-</button>
-                    <button id="btn0" class="touche noir">0</button>
-                    <button id="btnComma" class="touche noir">,</i></button>
-                    <button id="btnEqual" class="touche orange">=</button>
-                </div>
-
+            <div class="row">
+                <div class="key gris" onclick="appendToResult('%')">%</div>
+                <div class="key gris" onclick="clearResult('CE')">CE</div>
+                <div class="key gris" onclick="clearResult('C')">C</div>
+                <div class="key gris" onclick="appendToResult('X')">x</div>
+            </div>
+            <div class="row">
+                <div class="key gris" onclick="appendToResult('1/x')">1/x</div>
+                <div class="key gris" onclick="appendToResult('x2')">x2</div>
+                <div class="key gris" onclick="appendToResult('Vx')">Vx</div>
+                <div class="key orange" onclick="appendToResult('/')">/</div>
+            </div>
+            <div class="row">
+                <div class="key noir" onclick="appendToResult('7')">7</div>
+                <div class="key noir" onclick="appendToResult('8')">8</div>
+                <div class="key noir" onclick="appendToResult('9')">9</div>
+                <div class="key orange" onclick="appendToResult('X')">X</div>
+            </div>
+            <div class="row">
+                <div class="key noir" onclick="appendToResult('4')">4</div>
+                <div class="key noir" onclick="appendToResult('5')">5</div>
+                <div class="key noir" onclick="appendToResult('6')">6</div>
+                <div class="key orange" onclick="appendToResult('-')">-</div>
+            </div>
+            <div class="row">
+                <div class="key noir" onclick="appendToResult('1')">1</div>
+                <div class="key noir" onclick="appendToResult('2')">2</div>
+                <div class="key noir" onclick="appendToResult('3')">3</div>
+                <div class="key orange" onclick="appendToResult('+')">+</div>
+            </div>
+            <div class="row">
+                <div class="key noir" onclick="appendToResult('+/-')">+/-</div>
+                <div class="key noir" onclick="appendToResult('0')">0</div>
+                <div class="key noir" onclick="appendToResult(',')">,</div>
+                <div class="key orange" onclick="calculate()">=</div>
             </div>
         </div>
-        <div id="btnSci">
-            <div id="boutonsB">
-                <div class="row1">
-                    <button id="btnPourcent" class="toucheSci gris">%</button>
-                    <button id="btnPi" class="toucheSci gris">PI</button>
-                    <button id="btnE" class="toucheSci gris ">e</button>
-                    <button id="btnC" class="toucheSci gris">C</button>
-                    <button id="btnDelete" class="toucheSci gris">X</button>
-                </div>
-                <div class="row2">
-                    <button id="btnSquare" class="toucheSci gris">X2</button>
-                    <button id="btnInverse" class="toucheSci gris">1/x</button>
-                    <button id="btnAbs" class="toucheSci gris">|x|</button>
-                    <button id="btnExp" class="toucheSci gris">exp</button>
-                    <button id="btnMod" class="toucheSci gris">mod</button>
-                </div>
-                <div class="row3">
-                    <button id="btnSquareRoot" class="toucheSci gris">Vx</button>
-                    <button id="btnParenthesisIn" class="toucheSci gris">(</button>
-                    <button id="btnParenthesisOut" class="toucheSci gris">)</button>
-                    <button id="btnFactorial" class="toucheSci gris">n!</button>
-                    <button id="btnDivide" class="toucheSci orange">/</button>
-                </div>
-                <div class="row4">
-                    <button id="btnXPowerY" class="toucheSci gris">xy</button>
-                    <button id="btn7" class="toucheSci noir">7</button>
-                    <button id="btn8" class="toucheSci noir">8</i></button>
-                    <button id="btn9" class="toucheSci noir">9</button>
-                    <button id="btnMultiply" class="toucheSci orange">X</button>
 
-                </div>
-                <div class="row5">
-                    <button id="btn10PowerX" class="toucheSci gris">10x</button>
-                    <button id="btn4" class="toucheSci noir">4</button>
-                    <button id="btn5" class="toucheSci noir">5</button>
-                    <button id="btn6" class=" toucheSci noir">6</button>
-                    <button id="btnSubstract" class=" toucheSci orange">-</button>
-                </div>
-                <div class=" row6">
-                    <button id="btnLog" class="toucheSci gris">log</button>
-                    <button id="btn1" class="toucheSci noir">1</button>
-                    <button id="btn2" class="toucheSci noir">2</i></button>
-                    <button id="btn3" class="toucheSci noir">3</button>
-                    <button id="btnAdd" class="toucheSci orange">+</button>
-                </div>
-                <div class=" row7">
-                    <button id="btnLn" class="toucheSci gris">ln</button>
-                    <button id="btnChangeSign" class="toucheSci noir">+/-</button>
-                    <button id="btn0" class="toucheSci noir">0</button>
-                    <button id="btnComma" class="toucheSci noir">,</button>
-                    <button id="btnEqual" class="toucheSci orange">=</button>
-                </div>
+        <div id="btnSci" style="display: none;">
+            <div class="row">
+                <div class="keyS gris" onclick="appendToResult">%</div>
+                <div class="keyS gris" onclick="appendToResult">PI</div>
+                <div class="keyS gris" onclick="appendToResult">e</div>
+                <div class="keyS gris" onclick="appendToResult">C</div>
+                <div class="keyS gris" onclick="appendToResult">x</div>
+
             </div>
+            <div class="row">
+                <div class="keyS gris" onclick="appendToResult">X2</div>
+                <div class="keyS gris" onclick="appendToResult">1/x</div>
+                <div class="keyS gris" onclick="appendToResult">|x|</div>
+                <div class="keyS gris" onclick="appendToResult">exp</div>
+                <div class="keyS gris" onclick="appendToResult">MOD</div>
+
+            </div>
+            <div class="row">
+                <div class="keyS gris" onclick="appendToResult">Vx</div>
+                <div class="keyS gris" onclick="appendToResult">(</div>
+                <div class="keyS gris" onclick="appendToResult">)</div>
+                <div class="keyS gris" onclick="appendToResult">n!</div>
+                <div class="keyS orange" onclick="appendToResult('/')">/</div>
+            </div>
+            <div class="row">
+                <div class="keyS gris" onclick="appendToResult">xy</div>
+                <div class="keyS noir" onclick="appendToResult">7</div>
+                <div class="keyS noir" onclick="appendToResult">8</div>
+                <div class="keyS noir" onclick="appendToResult">9</div>
+                <div class="keyS orange" onclick="appendToResult('X')">X</div>
+            </div>
+            <div class="row">
+                <div class="keyS gris" onclick="appendToResult">10x</div>
+                <div class="keyS noir" onclick="appendToResult">4</div>
+                <div class="keyS noir" onclick="appendToResult">5</div>
+                <div class="keyS noir" onclick="appendToResult">6</div>
+                <div class="keyS orange" onclick="appendToResult('-')">-</div>
+            </div>
+            <div class="row">
+                <div class="keyS gris" onclick="appendToResult">log</div>
+                <div class="keyS noir" onclick="appendToResult">1</div>
+                <div class="keyS noir" onclick="appendToResult">2</div>
+                <div class="keyS noir" onclick="appendToResult">3</div>
+                <div class="keyS orange" onclick="appendToResult('+')">+</div>
+            </div>
+            <div class="row">
+                <div class="keyS gris" onclick="appendToResult">ln</div>
+                <div class="keyS noir" onclick="appendToResult">+/-</div>
+                <div class="keyS noir" onclick="appendToResult">0</div>
+                <div class="keyS noir" onclick="appendToResult">,</div>
+                <div class="keyS orange" onclick="calculate()">=</div>
+            </div>
+
         </div>
     </div>
-    </div>
-    </div>
-    </div>
 
 
 
+
+
+    <script>
+        let isStandard = true; // Vérifie l'interface actuelle
+
+        function appendToResult(value) {
+            document.getElementById('result').value += value;
+        }
+
+        function calculate() {
+            let result = document.getElementById('result').value;
+            let calculatedResult = eval(result);
+            document.getElementById('result').value = calculatedResult;
+        }
+
+        function clearResult() {
+            document.getElementById('result').value = '';
+        }
+
+        function toggleInterface() {
+            let standardInterface = document.getElementById('btnStd');
+            let scientificInterface = document.getElementById('btnSci');
+
+            if (isStandard) {
+                standardInterface.style.display = 'none';
+                scientificInterface.style.display = 'block';
+                isStandard = false;
+            } else {
+                standardInterface.style.display = 'block';
+                scientificInterface.style.display = 'none';
+                isStandard = true;
+            }
+        }
+    </script>
     <script src="./js/functioncalc.js"></script>
 </body>
 
