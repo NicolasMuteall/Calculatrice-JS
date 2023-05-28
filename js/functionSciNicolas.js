@@ -61,6 +61,10 @@ const btnFactorial = document.getElementById("btnFactorial");
 
 const btnMod = document.getElementById("btnMod");
 const btnXPowerY = document.getElementById("btnXPowerY");
+const btnParenthesisIn = document.getElementById("btnParenthesisIn");
+const btnParenthesisOut = document.getElementById("btnParenthesisOut");
+const btn10PowerX = document.getElementById("btn10PowerX");
+
 
 
 const btnMc = document.getElementById("memoryCell0");
@@ -179,18 +183,19 @@ AddOperator(btnComma, '.');
 AddOperator(btnPourcent, '%');
 AddOperator(btnMod, 'mod');
 AddOperator(btnXPowerY, '^');
-
+AddOperator(btnParenthesisIn, ' ( ');
+AddOperator(btnParenthesisOut, ' ) ');
 
 btnPourcent.onclick = function () {
     let chain = inputCalc.value;
-    let chainDivide = chain.split(" ");
+    chainDivide = chain.split(" ");
     console.log(chainDivide);
     lastElement = chainDivide[chainDivide.length - 1];
     console.log(lastElement);
     let temp = lastElement / 100;
     console.log(temp);
     chainDivide[chainDivide.length - 1] = temp;
-    contentTab = chainDivide.join(" ");
+    let contentTab = chainDivide.join(" ");
     inputCalc.value = contentTab;
 }
 
@@ -300,6 +305,19 @@ btnFactorial.onclick = function () {
         return num;
     }
     let temp = fnFactorial(lastElement);
+    console.log(temp);
+    chainDivide[chainDivide.length - 1] = temp;
+    contentTab = chainDivide.join(" ");
+    inputCalc.value = contentTab;
+}
+
+btn10PowerX.onclick = function () {
+    let chain = inputCalc.value;
+    let chainDivide = chain.split(" ");
+    console.log(chainDivide);
+    let lastElement = chainDivide[chainDivide.length - 1];
+    console.log(lastElement);
+    let temp = Math.pow(10, lastElement);
     console.log(temp);
     chainDivide[chainDivide.length - 1] = temp;
     contentTab = chainDivide.join(" ");
