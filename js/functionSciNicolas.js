@@ -116,11 +116,14 @@ function memory() {
     };
 }
 memory();
+
 /*function disableInput() {
     inputCalc.readOnly = true;
     inputResult.readOnly = true;
 }
 disableInput();*/
+
+/*-------------------------------------------------------------------------------------------------------*/
 
 function Clear() {
     btnC.onclick = function () {
@@ -185,6 +188,7 @@ AddOperator(btnMod, 'mod');
 AddOperator(btnXPowerY, '^');
 AddOperator(btnParenthesisIn, ' ( ');
 AddOperator(btnParenthesisOut, ' ) ');
+
 
 btnPourcent.onclick = function () {
     let chain = inputCalc.value;
@@ -296,15 +300,21 @@ btnFactorial.onclick = function () {
     console.log(chainDivide);
     let lastElement = chainDivide[chainDivide.length - 1];
     console.log(lastElement);
-    function fnFactorial(num) {
-        console.log(num);
-        if (num === 0 || num === 1) return 1;
-        for (let i = num - 1; i >= 1; i--) {
-            num = num * i;
+    function fnFactorial() {
+        var number = 1;
+        if (parseInt(lastElement) === 0) {
+            temp = "1";
+        } else if (parseInt(lastElement) < 0) {
+            inputResult.value = "undefined";
+        } else {
+            var number = 1;
+            for (var i = parseInt(lastElement); i > 0; i--) {
+                number *= i;
+            }
+            return number;
         }
-        return num;
     }
-    let temp = fnFactorial(lastElement);
+    let temp = fnFactorial();
     console.log(temp);
     chainDivide[chainDivide.length - 1] = temp;
     contentTab = chainDivide.join(" ");
