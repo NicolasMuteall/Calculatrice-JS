@@ -21,7 +21,6 @@ let rowMemory = ["MC", "MR", "M+", "M-", "MS"];
 const tableCalculator = document.getElementById("tableCalc");
 
 function CreateMemoryLine() {
-
     let memoryLine = document.createElement("tr");
     memoryLine.setAttribute("id", "memoryLine");
     tableCalc.appendChild(memoryLine);
@@ -32,7 +31,6 @@ function CreateMemoryLine() {
         memoryLine.appendChild(memoryCell);
         memoryCell.innerHTML += rowMemory[i];
     }
-
 }
 CreateMemoryLine();
 
@@ -83,10 +81,10 @@ function DeleteLeftZero() {
 function lastElement() {
     let chain = inputCalc.value;
     let chainDivide = chain.split(/[-+*/]/);
-    console.log("lastElement  chainDivide : " + chainDivide);
+    // console.log("lastElement  chainDivide : " + chainDivide);
     let lastElement = chainDivide[chainDivide.length - 1];
-    console.log("lastElement  lastElement : " + lastElement);
-    console.log("lastElement  parseFloat : " + parseFloat(lastElement));
+    // console.log("lastElement  lastElement : " + lastElement);
+    // console.log("lastElement  parseFloat : " + parseFloat(lastElement));
     return parseFloat(lastElement); // Denis
 }
 
@@ -98,11 +96,8 @@ function memory() {
     };
 
     btnMs.onclick = function () {
-        console.log("btn MS memory before: " + memory);
         // memory = lastElement();
         memory = eval(inputCalc.value);
-
-        console.log("btn MS New memory : " + memory);
     };
 
     btnMr.onclick = function () {
@@ -140,17 +135,13 @@ function memory() {
     };
 
     btnMPlus.onclick = function () {
-        console.log("btn M+ memory before : " + memory);
         let result = eval(inputCalc.value);
         memory += result;
-        console.log("btn M+ New memory : " + memory);
     };
 
     btnMMinus.onclick = function () {
-        console.log("btn M- memory before : " + memory);
         let result = eval(inputCalc.value);
         memory -= result;
-        console.log("btn M- New memory : " + memory);
     };
 }
 memory();
@@ -515,7 +506,6 @@ btnInverseS.onclick = function () {
     contentTab = chainDivide.join(" ");
     inputCalc.value = contentTab;
 };
-
 
 btnLog.onclick = function () {
     let chain = inputCalc.value;
