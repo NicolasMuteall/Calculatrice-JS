@@ -21,6 +21,7 @@ let rowMemory = ["MC", "MR", "M+", "M-", "MS"];
 const tableCalculator = document.getElementById("tableCalc");
 
 function CreateMemoryLine() {
+
     let memoryLine = document.createElement("tr");
     memoryLine.setAttribute("id", "memoryLine");
     tableCalc.appendChild(memoryLine);
@@ -31,6 +32,7 @@ function CreateMemoryLine() {
         memoryLine.appendChild(memoryCell);
         memoryCell.innerHTML += rowMemory[i];
     }
+
 }
 CreateMemoryLine();
 
@@ -259,6 +261,7 @@ btnSquareRoot.onclick = function () {
     let temp = 0;
     if (lastElement >= 0) {
         temp = Math.sqrt(lastElement);
+        temp = Math.floor(temp * 100000) / 100000;
     } else {
         temp = lastElement;
     }
@@ -279,11 +282,13 @@ btnInverse.onclick = function () {
     let temp = 0;
     if (parseFloat(lastElement) !== 0) {
         temp = 1 / lastElement;
+        result = Math.floor(temp * 100000) / 100000;
     } else {
-        temp = lastElement;
+        result = lastElement;
     }
+    console.log(result);
     console.log(temp);
-    chainDivide[chainDivide.length - 1] = temp;
+    chainDivide[chainDivide.length - 1] = result;
     contentTab = chainDivide.join(" ");
     inputCalc.value = contentTab;
 };
@@ -301,7 +306,6 @@ btnChangeSign.onclick = function () {
 
 function result() {
     btnEqual.onclick = function () {
-        let btnEqual = document.getElementById("btnEqual");
         let inputContent = inputCalc.value;
         let newInputContent = inputContent.replace("mod", "%");
         console.log(newInputContent);
@@ -512,31 +516,6 @@ btnInverseS.onclick = function () {
     inputCalc.value = contentTab;
 };
 
-btnAbs.onclick = function () {
-    let chain = inputCalc.value;
-    let chainDivide = chain.split(" ");
-    console.log(chainDivide);
-    let lastElement = chainDivide[chainDivide.length - 1];
-    console.log(lastElement);
-    let temp = Math.abs(lastElement);
-    console.log(temp);
-    chainDivide[chainDivide.length - 1] = temp;
-    contentTab = chainDivide.join(" ");
-    inputCalc.value = contentTab;
-};
-
-btnExp.onclick = function () {
-    let chain = inputCalc.value;
-    let chainDivide = chain.split(" ");
-    console.log(chainDivide);
-    let lastElement = chainDivide[chainDivide.length - 1];
-    console.log(lastElement);
-    let temp = Math.exp(lastElement);
-    console.log(temp);
-    chainDivide[chainDivide.length - 1] = temp;
-    contentTab = chainDivide.join(" ");
-    inputCalc.value = contentTab;
-};
 
 btnLog.onclick = function () {
     let chain = inputCalc.value;
@@ -645,7 +624,6 @@ function resultS() {
             if (estPresent) {
                 powerChain = chainDivide[i].split("^");
                 console.log(powerChain);
-
                 chainDivide[i] = Math.pow(powerChain[0], powerChain[1]);
                 console.log(chainDivide[i]);
             }
