@@ -1,18 +1,19 @@
 let isStandard = true;
+const decimal = 5;
 
 function toggleInterface() {
-  let standardInterface = document.getElementById("btnStd");
-  let scientificInterface = document.getElementById("btnSci");
+    let standardInterface = document.getElementById("btnStd");
+    let scientificInterface = document.getElementById("btnSci");
 
-  if (isStandard) {
-    standardInterface.style.display = "none";
-    scientificInterface.style.display = "block";
-    isStandard = false;
-  } else {
-    standardInterface.style.display = "block";
-    scientificInterface.style.display = "none";
-    isStandard = true;
-  }
+    if (isStandard) {
+        standardInterface.style.display = "none";
+        scientificInterface.style.display = "block";
+        isStandard = false;
+    } else {
+        standardInterface.style.display = "block";
+        scientificInterface.style.display = "none";
+        isStandard = true;
+    }
 }
 
 let rowMemory = ["MC", "MR", "M+", "M-", "MS"];
@@ -76,91 +77,102 @@ const btnMs = document.getElementById("memoryCell4");
 inputCalc.value = "0"; // Denis
 /*-----------------------------------------------------------------------------------------------------*/
 function DeleteLeftZero() {
-  if (inputCalc.value === "0") inputCalc.value = ""; // Denis
+    if (inputCalc.value === "0") inputCalc.value = ""; // Denis
 }
 
 function lastElement() {
-  let chain = inputCalc.value;
-  let chainDivide = chain.split(/[-+*/]/);
-  console.log("lastElement  chainDivide : " + chainDivide);
-  let lastElement = chainDivide[chainDivide.length - 1];
-  console.log("lastElement  lastElement : " + lastElement);
-  console.log("lastElement  parseFloat : " + parseFloat(lastElement));
-  return parseFloat(lastElement); // Denis
+    let chain = inputCalc.value;
+    let chainDivide = chain.split(/[-+*/]/);
+    console.log("lastElement  chainDivide : " + chainDivide);
+    let lastElement = chainDivide[chainDivide.length - 1];
+    console.log("lastElement  lastElement : " + lastElement);
+    console.log("lastElement  parseFloat : " + parseFloat(lastElement));
+    return parseFloat(lastElement); // Denis
 }
 
 function memory() {
-  let memory = 0;
+    let memory = 0;
 
-  btnMc.onclick = function () {
-    memory = 0;
-  };
+    btnMc.onclick = function () {
+        memory = 0;
+    };
 
-  btnMs.onclick = function () {
-    console.log("btn MS memory before: " + memory);
-    // memory = lastElement();
-    memory = eval(inputCalc.value);
+    btnMs.onclick = function () {
+        console.log("btn MS memory before: " + memory);
+        // memory = lastElement();
+        memory = eval(inputCalc.value);
 
-    console.log("btn MS New memory : " + memory);
-  };
+        console.log("btn MS New memory : " + memory);
+    };
 
-  btnMr.onclick = function () {
-    console.log("btn MR Read memory: " + memory);
-    // AddConstant(btnMr, memory);
+    btnMr.onclick = function () {
+        console.log("btn MR Read memory: " + memory);
+        // AddConstant(btnMr, memory);
 
-    DeleteLeftZero();
+        DeleteLeftZero();
 
-    console.log(isNaN(lastElement()));
+        console.log(isNaN(lastElement()));
 
-    // console.log(isNaN(lastElement()));
+        // console.log(isNaN(lastElement()));
 
-    if (isNaN(lastElement())) {
-      // lastElement()is not a number
-      inputCalc.value += memory;
-    } else {
-      // Replace lastElement()
+        if (isNaN(lastElement())) {
+            // lastElement()is not a number
+            inputCalc.value += memory;
+        } else {
+            // Replace lastElement()
 
-      let chain = inputCalc.value;
-      console.log("lastElement  chain : " + chain);
-      let chainDivide = chain.split(/[-+*/]/);
-      console.log("lastElement  chainDivide : " + chainDivide);
-      let lastElement = chainDivide[chainDivide.length - 1];
-      console.log("lastElement : " + lastElement);
+            let chain = inputCalc.value;
+            console.log("lastElement  chain : " + chain);
+            let chainDivide = chain.split(/[-+*/]/);
+            console.log("lastElement  chainDivide : " + chainDivide);
+            let lastElement = chainDivide[chainDivide.length - 1];
+            console.log("lastElement : " + lastElement);
 
-      let lastIndex = chain.lastIndexOf(lastElement) + 1;
+            let lastIndex = chain.lastIndexOf(lastElement) + 1;
 
-      const replacement = memory.toString();
+            const replacement = memory.toString();
 
-      inputCalc.value =
-        chain.slice(0, lastIndex) +
-        replacement +
-        chain.slice(lastIndex + replacement.length);
-    }
-  };
+            inputCalc.value =
+                chain.slice(0, lastIndex) +
+                replacement +
+                chain.slice(lastIndex + replacement.length);
+        }
+    };
 
-  btnMPlus.onclick = function () {
-    console.log("btn M+ memory before : " + memory);
-    let result = eval(inputCalc.value);
-    memory += result;
-    console.log("btn M+ New memory : " + memory);
-  };
+    btnMPlus.onclick = function () {
+        console.log("btn M+ memory before : " + memory);
+        let result = eval(inputCalc.value);
+        memory += result;
+        console.log("btn M+ New memory : " + memory);
+    };
 
-  btnMMinus.onclick = function () {
-    console.log("btn M- memory before : " + memory);
-    let result = eval(inputCalc.value);
-    memory -= result;
-    console.log("btn M- New memory : " + memory);
-  };
+    btnMMinus.onclick = function () {
+        console.log("btn M- memory before : " + memory);
+        let result = eval(inputCalc.value);
+        memory -= result;
+        console.log("btn M- New memory : " + memory);
+    };
 }
 memory();
 
 function Clear() {
-  btnC.onclick = function () {
-    inputCalc.value = "0"; // Denis
-    inputResult.value = "";
-  };
+    btnC.onclick = function () {
+        inputCalc.value = "0"; // Denis
+        inputResult.value = "";
+    };
 }
 Clear();
+
+function ClearCE() {
+    btnCE.onclick = function () {
+        let chain = inputCalc.value;
+        let chainDivide = chain.split(" ");
+        chainDivide[chainDivide.length - 1] = "";
+        let contentTab = chainDivide.join(" ");
+        inputCalc.value = contentTab;
+    };
+}
+ClearCE();
 
 function DeleteLastChar() {
   btnDelete.onclick = function () {
@@ -173,11 +185,11 @@ function DeleteLastChar() {
 DeleteLastChar();
 
 function AddNumber(btn, content) {
-  btn.onclick = function () {
-    DeleteLeftZero();
-    inputCalc.value += content;
-    /*console.log(inputCalc.value);*/
-  };
+    btn.onclick = function () {
+        DeleteLeftZero();
+        inputCalc.value += content;
+        /*console.log(inputCalc.value);*/
+    };
 }
 
 AddNumber(btn0, 0);
@@ -192,15 +204,18 @@ AddNumber(btn8, 8);
 AddNumber(btn9, 9);
 
 function AddOperator(btn, operator) {
-  btn.onclick = function () {
-    let chain = inputCalc.value;
-    let lastChart = chain.charAt(chain.length - 1);
-    /*console.log(lastChart);*/
+    btn.onclick = function () {
+        let chain = inputCalc.value;
+        let lastChart = chain.charAt(chain.length - 1);
+        //console.log(lastChart);
 
-    if (lastChart !== operator && lastChart !== "") {
-      inputCalc.value += operator;
-    }
-  };
+        if ((lastChart == operator || lastChart !== "") && operator == " ( ") {
+            DeleteLeftZero();
+            inputCalc.value += operator;
+        } else if (lastChart !== operator && lastChart !== "") {
+            inputCalc.value += operator;
+        }
+    };
 }
 
 AddOperator(btnAdd, " + ");
@@ -211,100 +226,114 @@ AddOperator(btnComma, ".");
 AddOperator(btnPourcent, "%");
 
 btnPourcent.onclick = function () {
-  let chain = inputCalc.value;
-  chainDivide = chain.split(" ");
-  console.log(chainDivide);
-  lastElement = chainDivide[chainDivide.length - 1];
-  console.log(lastElement);
-  let temp = lastElement / 100;
-  console.log(temp);
-  chainDivide[chainDivide.length - 1] = temp;
-  let contentTab = chainDivide.join(" ");
-  inputCalc.value = contentTab;
+    let chain = inputCalc.value;
+    chainDivide = chain.split(" ");
+    console.log(chainDivide);
+    lastElement = chainDivide[chainDivide.length - 1];
+    console.log(lastElement);
+    let temp = lastElement / 100;
+    console.log(temp);
+    chainDivide[chainDivide.length - 1] = temp;
+    let contentTab = chainDivide.join(" ");
+    inputCalc.value = contentTab;
 };
 
 btnSquare.onclick = function () {
-  let chain = inputCalc.value;
-  let chainDivide = chain.split(" ");
-  console.log(chainDivide);
-  let lastElement = chainDivide[chainDivide.length - 1];
-  console.log(lastElement);
-  let temp = eval(lastElement * lastElement);
-  console.log(temp);
-  chainDivide[chainDivide.length - 1] = temp;
-  contentTab = chainDivide.join(" ");
-  inputCalc.value = contentTab;
+    let chain = inputCalc.value;
+    let chainDivide = chain.split(" ");
+    console.log(chainDivide);
+    let lastElement = chainDivide[chainDivide.length - 1];
+    console.log(lastElement);
+    let temp = eval(lastElement * lastElement);
+    console.log(temp);
+    chainDivide[chainDivide.length - 1] = temp;
+    contentTab = chainDivide.join(" ");
+    inputCalc.value = contentTab;
 };
 
 btnSquareRoot.onclick = function () {
-  let chain = inputCalc.value;
-  let chainDivide = chain.split(" ");
-  console.log(chainDivide);
-  let lastElement = chainDivide[chainDivide.length - 1];
-  console.log(lastElement);
-  let temp = Math.sqrt(lastElement);
-  console.log(temp);
-  chainDivide[chainDivide.length - 1] = temp;
-  contentTab = chainDivide.join(" ");
-  inputCalc.value = contentTab;
+    let chain = inputCalc.value;
+    let chainDivide = chain.split(" ");
+    console.log(chainDivide);
+    let lastElement = chainDivide[chainDivide.length - 1];
+    console.log(lastElement);
+    // let temp = Math.sqrt(lastElement);
+    let temp = 0;
+    if (lastElement >= 0) {
+        temp = Math.sqrt(lastElement);
+        temp = Math.floor(temp * 100000) / 100000;
+    } else {
+        temp = lastElement;
+    }
+
+    console.log(temp);
+    chainDivide[chainDivide.length - 1] = temp;
+    contentTab = chainDivide.join(" ");
+    inputCalc.value = contentTab;
 };
 
 btnInverse.onclick = function () {
-  console.log("test");
-  let chain = inputCalc.value;
-
-  let chainDivide = chain.split(" ");
-  console.log(chainDivide);
-  let lastElement = chainDivide[chainDivide.length - 1];
-  console.log(lastElement);
-  let temp = 1 / lastElement;
-  console.log(temp);
-  chainDivide[chainDivide.length - 1] = temp;
-  contentTab = chainDivide.join(" ");
-  inputCalc.value = contentTab;
+    let chain = inputCalc.value;
+    let chainDivide = chain.split(" ");
+    console.log(chainDivide);
+    let lastElement = chainDivide[chainDivide.length - 1];
+    console.log(lastElement);
+    // let temp = 1 / lastElement;
+    let temp = 0;
+    if (parseFloat(lastElement) !== 0) {
+        temp = 1 / lastElement;
+        result = Math.floor(temp * 100000) / 100000;
+    } else {
+        result = lastElement;
+    }
+    console.log(result);
+    console.log(temp);
+    chainDivide[chainDivide.length - 1] = result;
+    contentTab = chainDivide.join(" ");
+    inputCalc.value = contentTab;
 };
 
 btnChangeSign.onclick = function () {
-  function plusMinus() {
-    if (inputCalc.value.charAt(0) === "-") {
-      inputCalc.value = inputCalc.value.slice(1);
-    } else {
-      inputCalc.value = "-" + inputCalc.value;
+    function plusMinus() {
+        if (inputCalc.value.charAt(0) === "-") {
+            inputCalc.value = inputCalc.value.slice(1);
+        } else {
+            inputCalc.value = "-" + inputCalc.value;
+        }
     }
-  }
-  plusMinus();
+    plusMinus();
 };
 
 function result() {
-  btnEqual.onclick = function () {
-    let btnEqual = document.getElementById("btnEqual");
-    let inputContent = inputCalc.value;
-    let newInputContent = inputContent.replace("mod", "%");
-    console.log(newInputContent);
+    btnEqual.onclick = function () {
+        let btnEqual = document.getElementById("btnEqual");
+        let inputContent = inputCalc.value;
+        let newInputContent = inputContent.replace("mod", "%");
+        console.log(newInputContent);
 
-    let chainDivide = newInputContent.split(" ");
-    console.log(chainDivide);
+        let chainDivide = newInputContent.split(" ");
+        console.log(chainDivide);
 
-    for (i = 0; i < chainDivide.length; i++) {
-      let estPresent = chainDivide[i].includes("^");
-      console.log(estPresent);
+        for (i = 0; i < chainDivide.length; i++) {
+            let estPresent = chainDivide[i].includes("^");
+            console.log(estPresent);
 
-      if (estPresent) {
-        powerChain = chainDivide[i].split("^");
-        console.log(powerChain);
+            if (estPresent) {
+                powerChain = chainDivide[i].split("^");
+                console.log(powerChain);
 
-        chainDivide[i] = Math.pow(powerChain[0], powerChain[1]);
-        console.log(chainDivide[i]);
-      }
-    }
-    console.log(chainDivide);
-    contentTab = chainDivide.join(" ");
-    console.log(contentTab);
+                chainDivide[i] = Math.pow(powerChain[0], powerChain[1]);
+                console.log(chainDivide[i]);
+            }
+        }
+        console.log(chainDivide);
+        contentTab = chainDivide.join(" ");
+        console.log(contentTab);
 
-    let result = eval(contentTab);
-    console.log(result);
-    inputResult.value = result;
-  };
+        let result = eval(contentTab);
+        console.log(result);
+        inputResult.value = result;
+    };
 }
 result();
 
@@ -359,58 +388,58 @@ AddNumber(btn8S, 8);
 AddNumber(btn9S, 9);
 
 function AddConstant(btn, content) {
-  btn.onclick = function () {
-    DeleteLeftZero();
+    btn.onclick = function () {
+        DeleteLeftZero();
 
-    console.log(isNaN(lastElement()));
+        console.log(isNaN(lastElement()));
 
-    // console.log(isNaN(lastElement()));
+        // console.log(isNaN(lastElement()));
 
-    if (isNaN(lastElement())) {
-      // lastElement()is not a number
-      inputCalc.value += content;
-    } else {
-      // Replace lastElement()
+        if (isNaN(lastElement())) {
+            // lastElement()is not a number
+            inputCalc.value += content;
+        } else {
+            // Replace lastElement()
 
-      let chain = inputCalc.value;
-      console.log("lastElement  chain : " + chain);
-      let chainDivide = chain.split(/[-+*/]/);
-      console.log("lastElement  chainDivide : " + chainDivide);
-      let lastElement = chainDivide[chainDivide.length - 1];
-      console.log("lastElement : " + lastElement);
+            let chain = inputCalc.value;
+            console.log("lastElement  chain : " + chain);
+            let chainDivide = chain.split(/[-+*/]/);
+            console.log("lastElement  chainDivide : " + chainDivide);
+            let lastElement = chainDivide[chainDivide.length - 1];
+            console.log("lastElement : " + lastElement);
 
-      let lastIndex = chain.lastIndexOf(lastElement) + 1;
+            let lastIndex = chain.lastIndexOf(lastElement) + 1;
 
-      const replacement = content.toString();
+            const replacement = content.toString();
 
-      inputCalc.value =
-        chain.slice(0, lastIndex) +
-        replacement +
-        chain.slice(lastIndex + replacement.length);
-    }
-  };
+            inputCalc.value =
+                chain.slice(0, lastIndex) +
+                replacement +
+                chain.slice(lastIndex + replacement.length);
+        }
+    };
 }
 
 function ClearS() {
-  btnCS.onclick = function () {
-    inputCalc.value = "0"; // Denis
-    inputResult.value = "";
-  };
+    btnCS.onclick = function () {
+        inputCalc.value = "0"; // Denis
+        inputResult.value = "";
+    };
 }
 ClearS();
 
 function DeleteLastCharS() {
-  btnDeleteS.onclick = function () {
-    let chain = inputCalc.value;
-    let newChain = chain.slice(0, -1);
-    inputCalc.value = newChain;
-    console.log(newChain);
-  };
+    btnDeleteS.onclick = function () {
+        let chain = inputCalc.value;
+        let newChain = chain.slice(0, -1);
+        inputCalc.value = newChain;
+        console.log(newChain);
+    };
 }
 DeleteLastCharS();
 
-AddConstant(btnPiS, Math.PI);
-AddConstant(btnES, Math.E);
+AddConstant(btnPiS, Math.PI.toFixed(decimal));
+AddConstant(btnES, Math.E.toFixed(decimal));
 
 AddOperator(btnAddS, " + ");
 AddOperator(btnSubstractS, " - ");
@@ -424,146 +453,75 @@ AddOperator(btnParenthesisIn, " ( ");
 AddOperator(btnParenthesisOut, " ) ");
 
 btnPourcentS.onclick = function () {
-  let chain = inputCalc.value;
-  chainDivide = chain.split(" ");
-  console.log(chainDivide);
-  let lastElement = chainDivide[chainDivide.length - 1];
-  console.log(lastElement);
-  let temp = lastElement / 100;
-  console.log(temp);
-  chainDivide[chainDivide.length - 1] = temp;
-  let contentTab = chainDivide.join(" ");
-  inputCalc.value = contentTab;
+    let chain = inputCalc.value;
+    chainDivide = chain.split(" ");
+    console.log(chainDivide);
+    let lastElement = chainDivide[chainDivide.length - 1];
+    console.log(lastElement);
+    let temp = lastElement / 100;
+    console.log(temp);
+    chainDivide[chainDivide.length - 1] = temp;
+    let contentTab = chainDivide.join(" ");
+    inputCalc.value = contentTab;
 };
 
 btnSquareS.onclick = function () {
-  let chain = inputCalc.value;
-  let chainDivide = chain.split(" ");
-  console.log(chainDivide);
-  let lastElement = chainDivide[chainDivide.length - 1];
-  console.log(lastElement);
-  let temp = eval(lastElement * lastElement);
-  console.log(temp);
-  chainDivide[chainDivide.length - 1] = temp;
-  contentTab = chainDivide.join(" ");
-  inputCalc.value = contentTab;
+    let chain = inputCalc.value;
+    let chainDivide = chain.split(" ");
+    console.log(chainDivide);
+    let lastElement = chainDivide[chainDivide.length - 1];
+    console.log(lastElement);
+    let temp = eval(lastElement * lastElement);
+    console.log(temp);
+    chainDivide[chainDivide.length - 1] = temp;
+    contentTab = chainDivide.join(" ");
+    inputCalc.value = contentTab;
 };
 
 btnSquareRootS.onclick = function () {
-  let chain = inputCalc.value;
-  let chainDivide = chain.split(" ");
-  console.log(chainDivide);
-  let lastElement = chainDivide[chainDivide.length - 1];
-  console.log(lastElement);
-  let temp = Math.sqrt(lastElement);
-  console.log(temp);
-  chainDivide[chainDivide.length - 1] = temp;
-  contentTab = chainDivide.join(" ");
-  inputCalc.value = contentTab;
+    let chain = inputCalc.value;
+    let chainDivide = chain.split(" ");
+    console.log(chainDivide);
+    let lastElement = chainDivide[chainDivide.length - 1];
+    console.log(lastElement);
+    // let temp = Math.sqrt(lastElement);
+    let temp = 0;
+    if (lastElement >= 0) {
+        temp = Math.sqrt(lastElement);
+    } else {
+        temp = lastElement;
+    }
+
+    console.log(temp);
+    chainDivide[chainDivide.length - 1] = temp;
+    contentTab = chainDivide.join(" ");
+    inputCalc.value = contentTab;
 };
 
 btnInverseS.onclick = function () {
-  console.log("test");
-  let chain = inputCalc.value;
-
-  let chainDivide = chain.split(" ");
-  console.log(chainDivide);
-  let lastElement = chainDivide[chainDivide.length - 1];
-  console.log(lastElement);
-  let temp = 1 / lastElement;
-  console.log(temp);
-  chainDivide[chainDivide.length - 1] = temp;
-  contentTab = chainDivide.join(" ");
-  inputCalc.value = contentTab;
-};
-
-btnAbs.onclick = function () {
-  let chain = inputCalc.value;
-  let chainDivide = chain.split(" ");
-  console.log(chainDivide);
-  let lastElement = chainDivide[chainDivide.length - 1];
-  console.log(lastElement);
-  let temp = Math.abs(lastElement);
-  console.log(temp);
-  chainDivide[chainDivide.length - 1] = temp;
-  contentTab = chainDivide.join(" ");
-  inputCalc.value = contentTab;
-};
-
-btnExp.onclick = function () {
-  let chain = inputCalc.value;
-  let chainDivide = chain.split(" ");
-  console.log(chainDivide);
-  let lastElement = chainDivide[chainDivide.length - 1];
-  console.log(lastElement);
-  let temp = Math.exp(lastElement);
-  console.log(temp);
-  chainDivide[chainDivide.length - 1] = temp;
-  contentTab = chainDivide.join(" ");
-  inputCalc.value = contentTab;
-};
-
-btnLog.onclick = function () {
-  let chain = inputCalc.value;
-  let chainDivide = chain.split(" ");
-  console.log(chainDivide);
-  let lastElement = chainDivide[chainDivide.length - 1];
-  console.log(lastElement);
-  let temp = Math.log10(lastElement);
-  console.log(temp);
-  chainDivide[chainDivide.length - 1] = temp;
-  contentTab = chainDivide.join(" ");
-  inputCalc.value = contentTab;
-};
-
-btnLn.onclick = function () {
-  let chain = inputCalc.value;
-  let chainDivide = chain.split(" ");
-  console.log(chainDivide);
-  let lastElement = chainDivide[chainDivide.length - 1];
-  console.log(lastElement);
-  let temp = Math.log10(lastElement) * Math.LN10;
-  console.log(temp);
-  chainDivide[chainDivide.length - 1] = temp;
-  contentTab = chainDivide.join(" ");
-  inputCalc.value = contentTab;
-};
-
-btnFactorial.onclick = function () {
-  let chain = inputCalc.value;
-  let chainDivide = chain.split(" ");
-  console.log(chainDivide);
-  let lastElement = chainDivide[chainDivide.length - 1];
-  console.log(lastElement);
-  function fnFactorial(num) {
-    console.log(num);
-    if (num === 0 || num === 1) return 1;
-    for (let i = num - 1; i >= 1; i--) {
-      num = num * i;
+    let chain = inputCalc.value;
+    let chainDivide = chain.split(" ");
+    console.log(chainDivide);
+    let lastElement = chainDivide[chainDivide.length - 1];
+    console.log(lastElement);
+    // let temp = 1 / lastElement;
+    let temp = 0;
+    let result = 0;
+    if (parseFloat(lastElement) !== 0) {
+        temp = 1 / lastElement;
+        result = Math.floor(temp * 100000) / 100000;
+    } else {
+        result = lastElement;
     }
-    return num;
-  }
-  let temp = fnFactorial(lastElement);
-  console.log(temp);
-  chainDivide[chainDivide.length - 1] = temp;
-  contentTab = chainDivide.join(" ");
-  inputCalc.value = contentTab;
+    console.log(result);
+    console.log(temp);
+    chainDivide[chainDivide.length - 1] = result;
+    contentTab = chainDivide.join(" ");
+    inputCalc.value = contentTab;
+
 };
 
-btn10PowerX.onclick = function () {
-  let chain = inputCalc.value;
-  let chainDivide = chain.split(" ");
-  console.log(chainDivide);
-  let lastElement = chainDivide[chainDivide.length - 1];
-  console.log(lastElement);
-  let temp = Math.pow(10, lastElement);
-  console.log(temp);
-  chainDivide[chainDivide.length - 1] = temp;
-  contentTab = chainDivide.join(" ");
-  inputCalc.value = contentTab;
-};
-
-btnChangeSignS.onclick = function () {
+btnChangeSign.onclick = function () {
   function plusMinus() {
     if (inputCalc.value.charAt(0) === "-") {
       inputCalc.value = inputCalc.value.slice(1);
@@ -574,14 +532,24 @@ btnChangeSignS.onclick = function () {
   plusMinus();
 };
 
-function resultS() {
-  btnEqualS.onclick = function () {
+function result() {
+  btnEqual.onclick = function () {
+    let btnEqual = document.getElementById("btnEqual");
     let inputContent = inputCalc.value;
     let newInputContent = inputContent.replace("mod", "%");
     console.log(newInputContent);
 
     let chainDivide = newInputContent.split(" ");
     console.log(chainDivide);
+    let lastElement = chainDivide[chainDivide.length - 1];
+    console.log(lastElement);
+    let temp = Math.abs(lastElement);
+    console.log(temp);
+    chainDivide[chainDivide.length - 1] = temp;
+    contentTab = chainDivide.join(" ");
+    inputCalc.value = contentTab;
+};
+
 
     for (i = 0; i < chainDivide.length; i++) {
       let estPresent = chainDivide[i].includes("^");
@@ -596,12 +564,126 @@ function resultS() {
       }
     }
     console.log(chainDivide);
+    let lastElement = chainDivide[chainDivide.length - 1];
+    console.log(lastElement);
+    let temp = Math.exp(lastElement).toFixed(decimal);
+    console.log(temp);
+    chainDivide[chainDivide.length - 1] = temp;
     contentTab = chainDivide.join(" ");
-    console.log(contentTab);
+    inputCalc.value = contentTab;
+};
 
-    let result = eval(contentTab);
-    console.log(result);
-    inputResult.value = result;
-  };
+btnLog.onclick = function () {
+    let chain = inputCalc.value;
+    let chainDivide = chain.split(" ");
+    console.log(chainDivide);
+    let lastElement = chainDivide[chainDivide.length - 1];
+    console.log(lastElement);
+    // let temp = Math.log10(lastElement);
+    let temp = 0;
+    if (lastElement > 0) {
+        temp = Math.log10(lastElement).toFixed(decimal);
+    } else {
+        temp = lastElement;
+    }
+    console.log(temp);
+    chainDivide[chainDivide.length - 1] = temp;
+    contentTab = chainDivide.join(" ");
+    inputCalc.value = contentTab;
+};
+
+btnLn.onclick = function () {
+    let chain = inputCalc.value;
+    let chainDivide = chain.split(" ");
+    console.log(chainDivide);
+    let lastElement = chainDivide[chainDivide.length - 1];
+    console.log(lastElement);
+    // let temp = Math.log10(lastElement) * Math.LN10;
+    let temp = 0;
+    if (lastElement > 0) {
+        temp = (Math.log10(lastElement) * Math.LN10).toFixed(decimal);
+    } else {
+        temp = lastElement;
+    }
+    console.log(temp);
+    chainDivide[chainDivide.length - 1] = temp;
+    contentTab = chainDivide.join(" ");
+    inputCalc.value = contentTab;
+};
+
+btnFactorial.onclick = function () {
+    let chain = inputCalc.value;
+    let chainDivide = chain.split(" ");
+    console.log(chainDivide);
+    let lastElement = chainDivide[chainDivide.length - 1];
+    console.log(lastElement);
+    function fnFactorial(num) {
+        console.log(num);
+        if (num == 0 || num == 1) return 1;
+        for (let i = num - 1; i >= 1; i--) {
+            num = num * i;
+        }
+        return num;
+    }
+    let temp = fnFactorial(lastElement);
+    console.log(temp);
+    chainDivide[chainDivide.length - 1] = temp;
+    contentTab = chainDivide.join(" ");
+    inputCalc.value = contentTab;
+};
+
+btn10PowerX.onclick = function () {
+    let chain = inputCalc.value;
+    let chainDivide = chain.split(" ");
+    console.log(chainDivide);
+    let lastElement = chainDivide[chainDivide.length - 1];
+    console.log(lastElement);
+    let temp = Math.pow(10, lastElement);
+    console.log(temp);
+    chainDivide[chainDivide.length - 1] = temp;
+    contentTab = chainDivide.join(" ");
+    inputCalc.value = contentTab;
+};
+
+btnChangeSignS.onclick = function () {
+    function plusMinus() {
+        if (inputCalc.value.charAt(0) === "-" || inputCalc.value.charAt(0) === "0") {
+            inputCalc.value = inputCalc.value.slice(1);
+        } else if (inputCalc.value.charAt(0) !== "-" && inputCalc.value.charAt(0) !== "0") {
+            inputCalc.value = "-" + inputCalc.value;
+        }
+    }
+    plusMinus();
+};
+
+function resultS() {
+    btnEqualS.onclick = function () {
+        let inputContent = inputCalc.value;
+        let newInputContent = inputContent.replace("mod", "%");
+        console.log(newInputContent);
+
+        let chainDivide = newInputContent.split(" ");
+        console.log(chainDivide);
+
+        for (i = 0; i < chainDivide.length; i++) {
+            let estPresent = chainDivide[i].includes("^");
+            console.log(estPresent);
+
+            if (estPresent) {
+                powerChain = chainDivide[i].split("^");
+                console.log(powerChain);
+
+                chainDivide[i] = Math.pow(powerChain[0], powerChain[1]);
+                console.log(chainDivide[i]);
+            }
+        }
+        console.log(chainDivide);
+        contentTab = chainDivide.join(" ");
+        console.log(contentTab);
+
+        let result = eval(contentTab);
+        console.log(result);
+        inputResult.value = result;
+    };
 }
 resultS();
