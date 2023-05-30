@@ -200,3 +200,33 @@ body {
     background-color: #575656;
     color: #fff;
 }
+
+#btnPiS img {
+    margin-top: 13px;
+    width: 24px;
+    height: 24px;
+}
+
+#btnDeleteS img {
+    margin-top: 13px;
+    width: 24px;
+    height: 24px;
+}
+
+#btnDelete img {
+    margin-top: 13px;
+    width: 24px;
+    height: 24px;
+}
+
+#btnSquareRoot img {
+    margin-top: 13px;
+    width: 24px;
+    height: 24px;
+}
+
+#btnXPowerY img {
+    margin-top: 13px;
+    width: 24px;
+    height: 24px;
+}
