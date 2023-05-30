@@ -259,6 +259,7 @@ btnSquareRoot.onclick = function () {
     let temp = 0;
     if (lastElement >= 0) {
         temp = Math.sqrt(lastElement);
+        temp = Math.floor(temp * 100000) / 100000;
     } else {
         temp = lastElement;
     }
@@ -279,11 +280,13 @@ btnInverse.onclick = function () {
     let temp = 0;
     if (parseFloat(lastElement) !== 0) {
         temp = 1 / lastElement;
+        result = Math.floor(temp * 100000) / 100000;
     } else {
-        temp = lastElement;
+        result = lastElement;
     }
+    console.log(result);
     console.log(temp);
-    chainDivide[chainDivide.length - 1] = temp;
+    chainDivide[chainDivide.length - 1] = result;
     contentTab = chainDivide.join(" ");
     inputCalc.value = contentTab;
 };
@@ -501,13 +504,16 @@ btnInverseS.onclick = function () {
     console.log(lastElement);
     // let temp = 1 / lastElement;
     let temp = 0;
+    let result = 0;
     if (parseFloat(lastElement) !== 0) {
         temp = 1 / lastElement;
+        result = Math.floor(temp * 100000) / 100000;
     } else {
-        temp = lastElement;
+        result = lastElement;
     }
+    console.log(result);
     console.log(temp);
-    chainDivide[chainDivide.length - 1] = temp;
+    chainDivide[chainDivide.length - 1] = result;
     contentTab = chainDivide.join(" ");
     inputCalc.value = contentTab;
 };
@@ -531,7 +537,7 @@ btnExp.onclick = function () {
     console.log(chainDivide);
     let lastElement = chainDivide[chainDivide.length - 1];
     console.log(lastElement);
-    let temp = Math.exp(lastElement);
+    let temp = Math.exp(lastElement).toFixed(decimal);
     console.log(temp);
     chainDivide[chainDivide.length - 1] = temp;
     contentTab = chainDivide.join(" ");
@@ -612,9 +618,9 @@ btn10PowerX.onclick = function () {
 
 btnChangeSignS.onclick = function () {
     function plusMinus() {
-        if (inputCalc.value.charAt(0) === "-") {
+        if (inputCalc.value.charAt(0) === "-" || inputCalc.value.charAt(0) === "0") {
             inputCalc.value = inputCalc.value.slice(1);
-        } else {
+        } else if (inputCalc.value.charAt(0) !== "-" && inputCalc.value.charAt(0) !== "0") {
             inputCalc.value = "-" + inputCalc.value;
         }
     }
