@@ -205,7 +205,7 @@ function AddOperator(btn, operator) {
     btn.onclick = function () {
         let chain = inputCalc.value;
         let lastChart = chain.charAt(chain.length - 1);
-        /console.log(lastChart);/
+        console.log(lastChart);
 
         if ((lastChart == operator || lastChart !== "") && operator == " ( ") {
             DeleteLeftZero();
@@ -624,6 +624,14 @@ btnChangeSignS.onclick = function () {
 function resultS() {
     btnEqualS.onclick = function () {
         let inputContent = inputCalc.value;
+
+        console.log(inputCalc.value.includes("mod"));
+
+        // if (inputCalc.value.includes("mod")) {
+        //     let chainDivide = inputCalc.value.split(" ");
+        //     console.log(chainDivide);
+        // }
+
         let newInputContent = inputContent.replace("mod", "%");
         console.log(newInputContent);
 
