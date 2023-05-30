@@ -22,16 +22,16 @@ const tableCalculator = document.getElementById("tableCalc");
 
 function CreateMemoryLine() {
 
-  let memoryLine = document.createElement("tr");
-  memoryLine.setAttribute("id", "memoryLine");
-  tableCalc.appendChild(memoryLine);
+    let memoryLine = document.createElement("tr");
+    memoryLine.setAttribute("id", "memoryLine");
+    tableCalc.appendChild(memoryLine);
 
-  for (i = 0; i < rowMemory.length; i++) {
-    let memoryCell = document.createElement("td");
-    memoryCell.setAttribute("id", "memoryCell" + i);
-    memoryLine.appendChild(memoryCell);
-    memoryCell.innerHTML += rowMemory[i];
-  }
+    for (i = 0; i < rowMemory.length; i++) {
+        let memoryCell = document.createElement("td");
+        memoryCell.setAttribute("id", "memoryCell" + i);
+        memoryLine.appendChild(memoryCell);
+        memoryCell.innerHTML += rowMemory[i];
+    }
 
 }
 CreateMemoryLine();
@@ -175,12 +175,12 @@ function ClearCE() {
 ClearCE();
 
 function DeleteLastChar() {
-  btnDelete.onclick = function () {
-    let chain = inputCalc.value;
-    let newChain = chain.slice(0, -1);
-    inputCalc.value = newChain;
-    console.log(newChain);
-  };
+    btnDelete.onclick = function () {
+        let chain = inputCalc.value;
+        let newChain = chain.slice(0, -1);
+        inputCalc.value = newChain;
+        console.log(newChain);
+    };
 }
 DeleteLastChar();
 
@@ -306,7 +306,6 @@ btnChangeSign.onclick = function () {
 
 function result() {
     btnEqual.onclick = function () {
-        let btnEqual = document.getElementById("btnEqual");
         let inputContent = inputCalc.value;
         let newInputContent = inputContent.replace("mod", "%");
         console.log(newInputContent);
@@ -519,58 +518,6 @@ btnInverseS.onclick = function () {
     contentTab = chainDivide.join(" ");
     inputCalc.value = contentTab;
 
-};
-
-btnChangeSign.onclick = function () {
-  function plusMinus() {
-    if (inputCalc.value.charAt(0) === "-") {
-      inputCalc.value = inputCalc.value.slice(1);
-    } else {
-      inputCalc.value = "-" + inputCalc.value;
-    }
-  }
-  plusMinus();
-};
-
-function result() {
-  btnEqual.onclick = function () {
-    let btnEqual = document.getElementById("btnEqual");
-    let inputContent = inputCalc.value;
-    let newInputContent = inputContent.replace("mod", "%");
-    console.log(newInputContent);
-
-    let chainDivide = newInputContent.split(" ");
-    console.log(chainDivide);
-    let lastElement = chainDivide[chainDivide.length - 1];
-    console.log(lastElement);
-    let temp = Math.abs(lastElement);
-    console.log(temp);
-    chainDivide[chainDivide.length - 1] = temp;
-    contentTab = chainDivide.join(" ");
-    inputCalc.value = contentTab;
-};
-
-
-    for (i = 0; i < chainDivide.length; i++) {
-      let estPresent = chainDivide[i].includes("^");
-      console.log(estPresent);
-
-      if (estPresent) {
-        powerChain = chainDivide[i].split("^");
-        console.log(powerChain);
-
-        chainDivide[i] = Math.pow(powerChain[0], powerChain[1]);
-        console.log(chainDivide[i]);
-      }
-    }
-    console.log(chainDivide);
-    let lastElement = chainDivide[chainDivide.length - 1];
-    console.log(lastElement);
-    let temp = Math.exp(lastElement).toFixed(decimal);
-    console.log(temp);
-    chainDivide[chainDivide.length - 1] = temp;
-    contentTab = chainDivide.join(" ");
-    inputCalc.value = contentTab;
 };
 
 btnLog.onclick = function () {
