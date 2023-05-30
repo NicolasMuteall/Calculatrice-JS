@@ -627,7 +627,7 @@ function resultS() {
 
         console.log(inputCalc.value.includes("mod"));
 
-        // if (inputCalc.value.includes("mod")) {
+        // if (inputCalSc.value.includes("mod")) {
         //     let chainDivide = inputCalc.value.split(" ");
         //     console.log(chainDivide);
         // }
