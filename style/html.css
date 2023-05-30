@@ -1,0 +1,26 @@
+.col1 {
+    width: 260px;
+    height: 35px;
+    margin-left: 20px;
+    border: #ECE8E8 solid 1px;
+    border-radius: 10px;
+    font-size: 34px;
+    font-weight: 100;
+    text-align: right;
+    background-color: #f6f9f6;
+    padding-right: 10px;
+}
+
+.résultat {
+    width: 260px;
+    height: 35px;
+    margin-left: 20px;
+    border: #ECE8E8 solid 1px;
+    font-size: 34px;
+    font-style: oblique;
+    font-weight: 100;
+    text-align: right;
+    background-color: rgb(250, 252, 251);
+    padding-right: 10px;
+    border-radius: 10px;
+}
