@@ -20,6 +20,7 @@ let rowMemory = ["MC", "MR", "M+", "M-", "MS"];
 const tableCalculator = document.getElementById("tableCalc");
 
 function CreateMemoryLine() {
+
   let memoryLine = document.createElement("tr");
   memoryLine.setAttribute("id", "memoryLine");
   tableCalc.appendChild(memoryLine);
@@ -30,6 +31,7 @@ function CreateMemoryLine() {
     memoryLine.appendChild(memoryCell);
     memoryCell.innerHTML += rowMemory[i];
   }
+
 }
 CreateMemoryLine();
 
