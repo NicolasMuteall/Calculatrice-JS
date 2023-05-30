@@ -207,7 +207,7 @@ function AddOperator(btn, operator) {
     btn.onclick = function () {
         let chain = inputCalc.value;
         let lastChart = chain.charAt(chain.length - 1);
-        //console.log(lastChart);
+        console.log(lastChart);
 
         if ((lastChart == operator || lastChart !== "") && operator == " ( ") {
             DeleteLeftZero();
@@ -505,20 +505,17 @@ btnInverseS.onclick = function () {
     console.log(lastElement);
     // let temp = 1 / lastElement;
     let temp = 0;
-    let result = 0;
     if (parseFloat(lastElement) !== 0) {
         temp = 1 / lastElement;
-        result = Math.floor(temp * 100000) / 100000;
     } else {
-        result = lastElement;
+        temp = lastElement;
     }
-    console.log(result);
     console.log(temp);
-    chainDivide[chainDivide.length - 1] = result;
+    chainDivide[chainDivide.length - 1] = temp;
     contentTab = chainDivide.join(" ");
     inputCalc.value = contentTab;
-
 };
+
 
 btnLog.onclick = function () {
     let chain = inputCalc.value;
@@ -594,9 +591,9 @@ btn10PowerX.onclick = function () {
 
 btnChangeSignS.onclick = function () {
     function plusMinus() {
-        if (inputCalc.value.charAt(0) === "-" || inputCalc.value.charAt(0) === "0") {
+        if (inputCalc.value.charAt(0) === "-") {
             inputCalc.value = inputCalc.value.slice(1);
-        } else if (inputCalc.value.charAt(0) !== "-" && inputCalc.value.charAt(0) !== "0") {
+        } else {
             inputCalc.value = "-" + inputCalc.value;
         }
     }
@@ -606,6 +603,14 @@ btnChangeSignS.onclick = function () {
 function resultS() {
     btnEqualS.onclick = function () {
         let inputContent = inputCalc.value;
+
+        console.log(inputCalc.value.includes("mod"));
+
+        // if (inputCalSc.value.includes("mod")) {
+        //     let chainDivide = inputCalc.value.split(" ");
+        //     console.log(chainDivide);
+        // }
+
         let newInputContent = inputContent.replace("mod", "%");
         console.log(newInputContent);
 
@@ -619,7 +624,6 @@ function resultS() {
             if (estPresent) {
                 powerChain = chainDivide[i].split("^");
                 console.log(powerChain);
-
                 chainDivide[i] = Math.pow(powerChain[0], powerChain[1]);
                 console.log(chainDivide[i]);
             }
