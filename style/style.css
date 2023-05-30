@@ -24,6 +24,7 @@ body {
     border-radius: 20px;
     box-shadow: 10px 10px 25px -4px rgba(0, 0, 0, 0.75);
     padding: 20px;
+    color: #fff;
 }
 
 .row {
@@ -32,6 +33,12 @@ body {
 
 #btnStd {
     margin-left: -10px;
+
+}
+
+#btnSci {
+    margin-left: 0px;
+
 }
 
 .key {
@@ -43,8 +50,8 @@ body {
     line-height: 50px;
     cursor: pointer;
     font-size: 18px;
-    margin-left: 20px;
-    margin-bottom: 10px;
+    margin-left: 3px;
+    margin-bottom: 5px;
     margin-top: 10px;
     box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.75);
     position: relative;
@@ -57,6 +64,10 @@ body {
     z-index: 1;
 }
 
+.row {
+    display: flex;
+    justify-content: space-between;
+}
 
 .key.gris {
     background-color: #ACA4A4;
@@ -73,6 +84,13 @@ body {
     color: #fff;
 }
 
+#btnEqual {
+    background-color: #FC4E03;
+}
+
+#btnEqualS {
+    background-color: #FC4E03;
+}
 
 .select {
     width: 50px;
@@ -94,14 +112,32 @@ body {
     border-radius: 100px;
 }
 
-#resultat {
+#inputCalc {
     display: flex;
     width: 260px;
     height: 35px;
     margin-left: 70px;
-    margin-top: -40px;
+    margin-top: -60px;
     border: #ECE8E8 solid 1px;
-    font-size: 34px;
+    font-size: 20px;
+    font-weight: bold;
+    font-weight: 100;
+    text-align: right;
+    background-color: rgb(250, 252, 251);
+    padding-right: 10px;
+    border-radius: 10px;
+
+}
+
+#inputResult {
+    display: flex;
+    width: 260px;
+    height: 35px;
+    margin-left: 70px;
+    margin-top: 10px;
+    border: #ECE8E8 solid 1px;
+    font-size: 20px;
+    font-weight: bolder;
     font-weight: 100;
     text-align: right;
     background-color: rgb(250, 252, 251);
@@ -111,7 +147,7 @@ body {
 
 #tableCalc {
     width: 100%;
-
+    color: #333;
 
     cursor: pointer;
 }
@@ -132,17 +168,16 @@ body {
     width: 60px;
     height: 45px;
     border: none;
-    border-radius: 50px;
+    border-radius: 25px;
     text-align: center;
-    line-height: 45px;
+    line-height: 50px;
     cursor: pointer;
     font-size: 18px;
-    margin-left: 15px;
-    margin-bottom: 12px;
-    margin-top: 5px;
+
+    margin-top: 10px;
     box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.75);
-    /* position: relative; */
-    /* overflow: hidden; */
+    position: relative;
+    overflow: hidden;
     transition: transform 0.3s;
 }
 
@@ -166,249 +201,32 @@ body {
     color: #fff;
 }
 
-/*   
-.col1 {
-    width: 260px;
-    height: 35px;
-    margin-left: 20px;
-    border: #ECE8E8 solid 1px;
-    border-radius: 10px;
-    font-size: 34px;
-    font-weight: 100;
-    text-align: right;
-    background-color: #f6f9f6;
-    padding-right: 10px;
-}
-
-.key {
-    display: flex;
-    width: 260px;
-    height: 35px;
-    margin-left: 20px;
-    border: #ECE8E8 solid 1px;
-    font-size: 34px;
-    font-style: oblique;
-    font-weight: 100;
-    text-align: right;
-    background-color: rgb(250, 252, 251);
-    padding-right: 10px;
-    border-radius: 10px;
-}
-
-
-
-
-
-button {
-    width: 50px;
-    height: 45px;
-    background-color: #F08F1C;
-    color: #ECE8E8;
-    font-size: 20px;
-    border-radius: 15px;
-    margin-top: 0px;
-    margin-left: 5px;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-button:active {
-    transform: scale(0.9) rotate(5deg);
-}
-
-
-
-#btnEqual {
-    background-color: #fc4e03ab;
-}
-
-
-
-#memoryLine {
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-evenly;
-    cursor: pointer;
-}
-
-#memoryLine :hover {
-    background-color: #b1adad;
-    color: #ECE8E8;
-}
-
-
-
-i {
-    width: 23px;
+#btnPiS img {
+    margin-top: 13px;
+    width: 24px;
     height: 24px;
 }
 
-#boutons {
-    width: 100%;
-    /* margin-left: 20px; */
-/* margin-top: 10px;
-
-}
-
-.noir {
-    background-color: #575656;
-}
-
-.orange {
-    background-color: #F08F1C;
-}
-
-.gris {
-    background-color: #ACA4A4;
-}
-
-#btnSci {
-    display: none;
-} */
-
-/* #container1 {
-
-    margin-left: 730px;
-    margin-top: 100px;
-    width: 360px;
-    height: 496px;
-    border: solid rgb(188, 186, 186) 20px;
-    background-color: #ECE8E8;
-    border-radius: 20px;
-    box-shadow: 10px 10px 25px -4px rgba(0, 0, 0, 0.75);
-}
-
-#headerSci {
-    margin-top: 6px;
-    display: flex;
-}
-
-.col1 {
-
-    width: 260px;
-    height: 35px;
-    margin-left: 20px;
-    border: #ECE8E8 solid 1px;
-    border-radius: 10px;
-    font-size: 34px;
-    font-weight: 100;
-    text-align: right;
-    background-color: #f6f9f6;
-    padding-right: 10px;
-}
-
-.résultat {
-    width: 260px;
-    height: 35px;
-    margin-left: 20px;
-    border: #ECE8E8 solid 1px;
-    font-size: 34px;
-    font-weight: 100;
-    text-align: right;
-    background-color: rgb(250, 252, 251);
-    padding-right: 10px;
-    border-radius: 10px;
-} */
-
-/* .select {
-    border: none;
-    margin-top: 6px;
-    box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
-
-}
-.touche {
-    width: 70px;
-    height: 50px;
-    border-radius: 25px;
-
-    margin-bottom: 10px;
-    margin-lefborder: none;
-    t: 14px;
-
-    box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.75);
-
-}
-button {
-    width: 50px;
-    height: 45px;
-    background-color: #F08F1C;
-    color: #ECE8E8;
-    font-size: 18px;
-    border-radius: 15px;
-    margin-top: 0px;
-    margin-left: 5px;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-button:active {
-    transform: scale(0.9) rotate(5deg);
-}
-
-#btnEqual {
-    background-color: #fc4e03ab;
-}
-
-#tableCalc {
-    width: 100%;
-}
-
-#memoryLine {
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-evenly;
-    cursor: pointer;
-}
-
-#memoryLine :hover {
-    background-color: #575656;
-    color: #ECE8E8;
-} */
-
-/* .toucheSci {
-    width: 15%;
-    height: 45px;
-    border-radius: 25px;
-    border: none;
-    margin-bottom: 8px;
-    margin-left: 15px;
-    box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.75);
-
-}
-
-i {
-    width: 23px;
+#btnDeleteS img {
+    margin-top: 13px;
+    width: 24px;
     height: 24px;
 }
 
-#boutonsB {
-    width: 100%;
-    margin-left: -5px;
-    margin-top: 10px;
-
-
+#btnDelete img {
+    margin-top: 13px;
+    width: 24px;
+    height: 24px;
 }
 
-.noir {
-    background-color: #575656;
+#btnSquareRoot img {
+    margin-top: 13px;
+    width: 24px;
+    height: 24px;
 }
 
-.orange {
-    background-color: #F08F1C;
+#btnXPowerY img {
+    margin-top: 13px;
+    width: 24px;
+    height: 24px;
 }
-
-.gris {
-    background-color: #ACA4A4;
-} */
-
-/* .rowA,
-.rowB {
-    display: none;
-} */
-
-/* #result {
-    width: 200px;
-    height: 30px;
-    text-align: right;
-    font-size: 18px;
-} */
