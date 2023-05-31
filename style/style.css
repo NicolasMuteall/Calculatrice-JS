@@ -71,7 +71,7 @@ body {
 
 .key.gris {
     background-color: #ACA4A4;
-    color: #333;
+    color: #fff;
 }
 
 .key.orange {
@@ -102,6 +102,7 @@ body {
     box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
     font-size: 22px;
     cursor: pointer;
+    color: white;
 }
 
 .select:hover {
