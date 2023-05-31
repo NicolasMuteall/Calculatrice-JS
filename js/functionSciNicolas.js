@@ -1,5 +1,10 @@
 let isStandard = true;
-const decimal = 5;
+const decimal = 7;
+
+function setDecimal(num) {
+    // Denis
+    return Math.floor(num * Math.pow(10, decimal)) / Math.pow(10, decimal);
+}
 
 function toggleInterface() {
     let standardInterface = document.getElementById("btnStd");
@@ -72,21 +77,21 @@ const btnMPlus = document.getElementById("memoryCell2");
 const btnMMinus = document.getElementById("memoryCell3");
 const btnMs = document.getElementById("memoryCell4");
 
-inputCalc.value = "0"; // Denis
+inputCalc.value = "0";
 /*-----------------------------------------------------------------------------------------------------*/
 function DeleteLeftZero() {
-    if (inputCalc.value === "0") inputCalc.value = ""; // Denis
+    if (inputCalc.value === "0") inputCalc.value = "";
 }
 
-function lastElement() {
-    let chain = inputCalc.value;
-    let chainDivide = chain.split(/[-+*/]/);
-    // console.log("lastElement  chainDivide : " + chainDivide);
-    let lastElement = chainDivide[chainDivide.length - 1];
-    // console.log("lastElement  lastElement : " + lastElement);
-    // console.log("lastElement  parseFloat : " + parseFloat(lastElement));
-    return parseFloat(lastElement); // Denis
-}
+// function lastElement() {
+//     let chain = inputCalc.value;
+//     let chainDivide = chain.split(/[-+*/]/);
+//     // console.log("lastElement  chainDivide : " + chainDivide);
+//     let lastElement = chainDivide[chainDivide.length - 1];
+//     // console.log("lastElement  lastElement : " + lastElement);
+//     // console.log("lastElement  parseFloat : " + parseFloat(lastElement));
+//     return parseFloat(lastElement); // Denis
+// }
 
 function memory() {
     let memory = 0;
@@ -96,37 +101,26 @@ function memory() {
     };
 
     btnMs.onclick = function () {
-        // memory = lastElement();
         memory = eval(inputCalc.value);
     };
 
     btnMr.onclick = function () {
-        console.log("btn MR Read memory: " + memory);
-        // AddConstant(btnMr, memory);
-
         DeleteLeftZero();
 
-        console.log(isNaN(lastElement()));
+        let chain = inputCalc.value;
+        let chainDivide = chain.split(/[-+*/]/);
+        let lastElement = chainDivide[chainDivide.length - 1];
 
-        // console.log(isNaN(lastElement()));
+        // console.log("typeof lastElement:  " + typeof lastElement);
+        // console.log("isNaN(lastElement) :  " + typeof parseFloat(lastElement));
 
-        if (isNaN(lastElement())) {
-            // lastElement()is not a number
+        if (isNaN(parseFloat(lastElement))) {
+            // lastElement is not a number
             inputCalc.value += memory;
         } else {
             // Replace lastElement()
-
-            let chain = inputCalc.value;
-            console.log("lastElement  chain : " + chain);
-            let chainDivide = chain.split(/[-+*/]/);
-            console.log("lastElement  chainDivide : " + chainDivide);
-            let lastElement = chainDivide[chainDivide.length - 1];
-            console.log("lastElement : " + lastElement);
-
             let lastIndex = chain.lastIndexOf(lastElement) + 1;
-
             const replacement = memory.toString();
-
             inputCalc.value =
                 chain.slice(0, lastIndex) +
                 replacement +
@@ -194,16 +188,37 @@ AddNumber(btn7, 7);
 AddNumber(btn8, 8);
 AddNumber(btn9, 9);
 
-function AddOperator(btn, operator) {
+function AddParenthesis(btn, operator) {
     btn.onclick = function () {
         let chain = inputCalc.value;
+        console.log(chain);
+
         let lastChart = chain.charAt(chain.length - 1);
         console.log(lastChart);
 
         if ((lastChart == operator || lastChart !== "") && operator == " ( ") {
             DeleteLeftZero();
+            console.log(lastChart);
             inputCalc.value += operator;
         } else if (lastChart !== operator && lastChart !== "") {
+            console.log(lastChart);
+            console.log(lastChart !== operator);
+            inputCalc.value += operator;
+        }
+    };
+}
+
+function AddOperator(btn, operator) {
+    btn.onclick = function () {
+        let chain = inputCalc.value;
+        let lastChart = chain.charAt(chain.length - 1);
+        console.log("chain : " + chain);
+        console.log("lastChart : " + lastChart);
+
+        if (lastChart !== operator && lastChart !== "") {
+            console.log(lastChart);
+            console.log(lastChart !== operator);
+
             inputCalc.value += operator;
         }
     };
@@ -214,7 +229,6 @@ AddOperator(btnSubstract, " - ");
 AddOperator(btnDivide, " / ");
 AddOperator(btnMultiply, " * ");
 AddOperator(btnComma, ".");
-AddOperator(btnPourcent, "%");
 
 btnPourcent.onclick = function () {
     let chain = inputCalc.value;
@@ -248,11 +262,11 @@ btnSquareRoot.onclick = function () {
     console.log(chainDivide);
     let lastElement = chainDivide[chainDivide.length - 1];
     console.log(lastElement);
-    // let temp = Math.sqrt(lastElement);
+
     let temp = 0;
     if (lastElement >= 0) {
         temp = Math.sqrt(lastElement);
-        temp = Math.floor(temp * 100000) / 100000;
+        temp = setDecimal(temp); // Denis
     } else {
         temp = lastElement;
     }
@@ -269,11 +283,10 @@ btnInverse.onclick = function () {
     console.log(chainDivide);
     let lastElement = chainDivide[chainDivide.length - 1];
     console.log(lastElement);
-    // let temp = 1 / lastElement;
     let temp = 0;
     if (parseFloat(lastElement) !== 0) {
         temp = 1 / lastElement;
-        result = Math.floor(temp * 100000) / 100000;
+        result = setDecimal(temp); // Denis
     } else {
         result = lastElement;
     }
@@ -377,31 +390,46 @@ AddNumber(btn7S, 7);
 AddNumber(btn8S, 8);
 AddNumber(btn9S, 9);
 
+AddParenthesis(btnParenthesisIn, " ( ");
+AddParenthesis(btnParenthesisOut, " ) ");
+
+function AddFn2Var(btn, operator) {
+    btn.onclick = function () {
+        let chain = inputCalc.value;
+        let chainDivide = chain.split(/[-+*/]/);
+        let lastElement = chainDivide[chainDivide.length - 1];
+        console.log(lastElement);
+        console.log(lastElement.includes(operator));
+
+        if (lastElement.includes(operator)) {
+            let lastESplit = lastElement.split(operator);
+            console.log(lastESplit);
+            if (lastESplit[1] !== "") {
+                inputCalc.value += operator;
+            }
+        } else {
+            inputCalc.value += operator;
+        }
+    };
+}
+AddFn2Var(btnXPowerY, "^");
+AddFn2Var(btnMod, "mod");
+
 function AddConstant(btn, content) {
     btn.onclick = function () {
         DeleteLeftZero();
 
-        console.log(isNaN(lastElement()));
+        let chain = inputCalc.value;
+        let chainDivide = chain.split(/[-+*/]/);
+        let lastElement = chainDivide[chainDivide.length - 1];
 
-        // console.log(isNaN(lastElement()));
-
-        if (isNaN(lastElement())) {
-            // lastElement()is not a number
+        if (isNaN(parseFloat(lastElement))) {
+            // lastElement is not a number
             inputCalc.value += content;
         } else {
             // Replace lastElement()
-
-            let chain = inputCalc.value;
-            console.log("lastElement  chain : " + chain);
-            let chainDivide = chain.split(/[-+*/]/);
-            console.log("lastElement  chainDivide : " + chainDivide);
-            let lastElement = chainDivide[chainDivide.length - 1];
-            console.log("lastElement : " + lastElement);
-
             let lastIndex = chain.lastIndexOf(lastElement) + 1;
-
             const replacement = content.toString();
-
             inputCalc.value =
                 chain.slice(0, lastIndex) +
                 replacement +
@@ -412,7 +440,7 @@ function AddConstant(btn, content) {
 
 function ClearS() {
     btnCS.onclick = function () {
-        inputCalc.value = "0"; // Denis
+        inputCalc.value = "0";
         inputResult.value = "";
     };
 }
@@ -436,11 +464,6 @@ AddOperator(btnSubstractS, " - ");
 AddOperator(btnDivideS, " / ");
 AddOperator(btnMultiplyS, " * ");
 AddOperator(btnCommaS, ".");
-// AddOperatorS(btnPourcent, "%");
-AddOperator(btnMod, "mod");
-AddOperator(btnXPowerY, "^");
-AddOperator(btnParenthesisIn, " ( ");
-AddOperator(btnParenthesisOut, " ) ");
 
 btnPourcentS.onclick = function () {
     let chain = inputCalc.value;
@@ -474,10 +497,10 @@ btnSquareRootS.onclick = function () {
     console.log(chainDivide);
     let lastElement = chainDivide[chainDivide.length - 1];
     console.log(lastElement);
-    // let temp = Math.sqrt(lastElement);
     let temp = 0;
     if (lastElement >= 0) {
         temp = Math.sqrt(lastElement);
+        temp = setDecimal(temp); // Denis
     } else {
         temp = lastElement;
     }
@@ -494,13 +517,39 @@ btnInverseS.onclick = function () {
     console.log(chainDivide);
     let lastElement = chainDivide[chainDivide.length - 1];
     console.log(lastElement);
-    // let temp = 1 / lastElement;
     let temp = 0;
     if (parseFloat(lastElement) !== 0) {
         temp = 1 / lastElement;
+        temp = setDecimal(temp); // Denis
     } else {
         temp = lastElement;
     }
+    console.log(temp);
+    chainDivide[chainDivide.length - 1] = temp;
+    contentTab = chainDivide.join(" ");
+    inputCalc.value = contentTab;
+};
+
+btnAbs.onclick = function () {
+    let chain = inputCalc.value;
+    let chainDivide = chain.split(" ");
+    console.log(chainDivide);
+    let lastElement = chainDivide[chainDivide.length - 1];
+    console.log(lastElement);
+    let temp = Math.abs(lastElement);
+    console.log(temp);
+    chainDivide[chainDivide.length - 1] = temp;
+    contentTab = chainDivide.join(" ");
+    inputCalc.value = contentTab;
+};
+
+btnExp.onclick = function () {
+    let chain = inputCalc.value;
+    let chainDivide = chain.split(" ");
+    console.log(chainDivide);
+    let lastElement = chainDivide[chainDivide.length - 1];
+    console.log(lastElement);
+    let temp = Math.exp(lastElement);
     console.log(temp);
     chainDivide[chainDivide.length - 1] = temp;
     contentTab = chainDivide.join(" ");
@@ -513,7 +562,6 @@ btnLog.onclick = function () {
     console.log(chainDivide);
     let lastElement = chainDivide[chainDivide.length - 1];
     console.log(lastElement);
-    // let temp = Math.log10(lastElement);
     let temp = 0;
     if (lastElement > 0) {
         temp = Math.log10(lastElement).toFixed(decimal);
@@ -532,7 +580,7 @@ btnLn.onclick = function () {
     console.log(chainDivide);
     let lastElement = chainDivide[chainDivide.length - 1];
     console.log(lastElement);
-    // let temp = Math.log10(lastElement) * Math.LN10;
+
     let temp = 0;
     if (lastElement > 0) {
         temp = (Math.log10(lastElement) * Math.LN10).toFixed(decimal);
