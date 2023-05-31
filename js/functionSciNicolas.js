@@ -211,24 +211,42 @@ function AddParenthesis(btn, operator) {
 function AddOperator(btn, operator) {
     btn.onclick = function () {
         let chain = inputCalc.value;
+        chainDivide = chain.split(" ");
+        console.log(chainDivide);
+        let lastOperator = chainDivide[chainDivide.length - 2];
+        console.log(lastOperator);
+        let lastElement = chainDivide[chainDivide.length - 1];
+        console.log(lastElement);
+
         let lastChart = chain.charAt(chain.length - 1);
-        console.log("chain : " + chain);
-        console.log("lastChart : " + lastChart);
+        console.log(lastChart);
 
-        if (lastChart !== operator && lastChart !== "") {
-            console.log(lastChart);
-            console.log(lastChart !== operator);
-
-            inputCalc.value += operator;
+        if (lastChart == " ") {
+            chain = chain.slice(0, chain.length - 1);
+            lastChart = chain.charAt(chain.length - 1);
+            chainDivide = chain.split(" ");
         }
-    };
-}
 
-AddOperator(btnAdd, " + ");
-AddOperator(btnSubstract, " - ");
-AddOperator(btnDivide, " / ");
-AddOperator(btnMultiply, " * ");
-AddOperator(btnComma, ".");
+        if (listOperator.includes(lastChart) === false) {
+            if (lastOperator === '/') {
+                if (lastElement != 0) {
+                    console.log('ok');
+                    inputCalc.value += " " + operator + " ";
+                }
+            } else {
+                inputCalc.value += " " + operator + " ";
+            }
+        }
+
+    }
+}
+let listOperator = ["+", "-", "", "/"];
+
+AddOperator(btnAdd, "+");
+AddOperator(btnSubstract, "-");
+AddOperator(btnDivide, "/");
+AddOperator(btnMultiply, "*");
+//AddOperator(btnComma, ".");
 
 btnPourcent.onclick = function () {
     let chain = inputCalc.value;
@@ -316,26 +334,52 @@ function result() {
 
         let chainDivide = newInputContent.split(" ");
         console.log(chainDivide);
+        let lastElement = chainDivide[chainDivide.length - 1];
+        let lastOperator = chainDivide[chainDivide.length - 2];
+        console.log(lastElement);
+        console.log(lastOperator);
 
-        for (i = 0; i < chainDivide.length; i++) {
-            let estPresent = chainDivide[i].includes("^");
-            console.log(estPresent);
+        if (lastOperator === '/') {
+            if (lastElement != 0) {
+                for (i = 0; i < chainDivide.length; i++) {
+                    let estPresent = chainDivide[i].includes("^");
+                    console.log(estPresent);
 
-            if (estPresent) {
-                powerChain = chainDivide[i].split("^");
-                console.log(powerChain);
+                    if (estPresent) {
+                        powerChain = chainDivide[i].split("^");
+                        console.log(powerChain);
+                        chainDivide[i] = Math.pow(powerChain[0], powerChain[1]);
+                        console.log(chainDivide[i]);
+                    }
+                }
+                console.log(chainDivide);
+                contentTab = chainDivide.join(" ");
+                console.log(contentTab);
 
-                chainDivide[i] = Math.pow(powerChain[0], powerChain[1]);
-                console.log(chainDivide[i]);
+                let result = eval(contentTab);
+                console.log(result);
+                inputResult.value = result;
             }
-        }
-        console.log(chainDivide);
-        contentTab = chainDivide.join(" ");
-        console.log(contentTab);
+        } else {
+            for (i = 0; i < chainDivide.length; i++) {
+                let estPresent = chainDivide[i].includes("^");
+                console.log(estPresent);
 
-        let result = eval(contentTab);
-        console.log(result);
-        inputResult.value = result;
+                if (estPresent) {
+                    powerChain = chainDivide[i].split("^");
+                    console.log(powerChain);
+                    chainDivide[i] = Math.pow(powerChain[0], powerChain[1]);
+                    console.log(chainDivide[i]);
+                }
+            }
+            console.log(chainDivide);
+            contentTab = chainDivide.join(" ");
+            console.log(contentTab);
+
+            let result = eval(contentTab);
+            console.log(result);
+            inputResult.value = result;
+        }
     };
 }
 result();
@@ -414,6 +458,8 @@ function AddFn2Var(btn, operator) {
 }
 AddFn2Var(btnXPowerY, "^");
 AddFn2Var(btnMod, "mod");
+AddFn2Var(btnComma, ".");
+AddFn2Var(btnCommaS, ".");
 
 function AddConstant(btn, content) {
     btn.onclick = function () {
@@ -459,11 +505,11 @@ DeleteLastCharS();
 AddConstant(btnPiS, Math.PI.toFixed(decimal));
 AddConstant(btnES, Math.E.toFixed(decimal));
 
-AddOperator(btnAddS, " + ");
-AddOperator(btnSubstractS, " - ");
-AddOperator(btnDivideS, " / ");
-AddOperator(btnMultiplyS, " * ");
-AddOperator(btnCommaS, ".");
+AddOperator(btnAddS, "+");
+AddOperator(btnSubstractS, "-");
+AddOperator(btnDivideS, "/");
+AddOperator(btnMultiplyS, "*");
+//AddOperator(btnCommaS, ".");
 
 btnPourcentS.onclick = function () {
     let chain = inputCalc.value;
@@ -654,25 +700,52 @@ function resultS() {
 
         let chainDivide = newInputContent.split(" ");
         console.log(chainDivide);
+        let lastElement = chainDivide[chainDivide.length - 1];
+        let lastOperator = chainDivide[chainDivide.length - 2];
+        console.log(lastElement);
+        console.log(lastOperator);
 
-        for (i = 0; i < chainDivide.length; i++) {
-            let estPresent = chainDivide[i].includes("^");
-            console.log(estPresent);
+        if (lastOperator === '/') {
+            if (lastElement != 0) {
+                for (i = 0; i < chainDivide.length; i++) {
+                    let estPresent = chainDivide[i].includes("^");
+                    console.log(estPresent);
 
-            if (estPresent) {
-                powerChain = chainDivide[i].split("^");
-                console.log(powerChain);
-                chainDivide[i] = Math.pow(powerChain[0], powerChain[1]);
-                console.log(chainDivide[i]);
+                    if (estPresent) {
+                        powerChain = chainDivide[i].split("^");
+                        console.log(powerChain);
+                        chainDivide[i] = Math.pow(powerChain[0], powerChain[1]);
+                        console.log(chainDivide[i]);
+                    }
+                }
+                console.log(chainDivide);
+                contentTab = chainDivide.join(" ");
+                console.log(contentTab);
+
+                let result = eval(contentTab);
+                console.log(result);
+                inputResult.value = result;
             }
-        }
-        console.log(chainDivide);
-        contentTab = chainDivide.join(" ");
-        console.log(contentTab);
+        } else {
+            for (i = 0; i < chainDivide.length; i++) {
+                let estPresent = chainDivide[i].includes("^");
+                console.log(estPresent);
 
-        let result = eval(contentTab);
-        console.log(result);
-        inputResult.value = result;
+                if (estPresent) {
+                    powerChain = chainDivide[i].split("^");
+                    console.log(powerChain);
+                    chainDivide[i] = Math.pow(powerChain[0], powerChain[1]);
+                    console.log(chainDivide[i]);
+                }
+            }
+            console.log(chainDivide);
+            contentTab = chainDivide.join(" ");
+            console.log(contentTab);
+
+            let result = eval(contentTab);
+            console.log(result);
+            inputResult.value = result;
+        }
     };
 }
 resultS();
