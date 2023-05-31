@@ -29,8 +29,8 @@ function toggleInterface() {
     let keyCode = event.which ? event.which : event.keyCode;
 
     if (keyCode === 13||96||97||98||99||100||101||102||103||104||105||106||107||109||110||111 ) {
-     document.getElementById("inputCalc") = ""
-     console.log("kjh")
+     document.getElementById("inputCalc") = "0"
+     
     }
   });
   
@@ -46,17 +46,17 @@ function calculerResultat() {
 }
 
 /*utiliser les touches du clavier et retire le chiffre zéro lorsqu'on commence un calcul */
-function isNumericKey(event) {
-//   event.target.value = "0"; // Efface la valeur de l'input
+ function isNumericKey(event) {
+//    event.target.value = ""; // Efface la valeur de l'input
 
-  let keyCode = event.which ? event.which : event.keyCode;
+   let keyCode = event.which ? event.which : event.keyCode;
 
-  if ((keyCode >= 48 && keyCode <= 57) || keyCode === 46) {
-    document.getElementById("inputCalc") = "";
-    console.log("key :::" + keyCode)
-    return true;
-  } 
-}
+   if (keyCode === 13||96||97||98||99||100||101||102||103||104||105||106||107||109||110||111 ) {
+     document.getElementById("inputCalc") = "0";
+     console.log("key :::" + keyCode)
+     return true;
+   } 
+ }
 
 window.addEventListener("load", function () {
   // Déclaration de toutes les fonctions et les éléments de la page
@@ -491,7 +491,7 @@ AddOperator(btnSubstractS, " - ");
 AddOperator(btnDivideS, " / ");
 AddOperator(btnMultiplyS, " * ");
 AddOperator(btnCommaS, ".");
-AddOperatorS(btnPourcent, "%");
+// AddOperatorS(btnPourcent, "%");
 AddOperator(btnMod, "mod");
 AddOperator(btnXPowerY, "^");
 AddOperator(btnParenthesisIn, " ( ");
