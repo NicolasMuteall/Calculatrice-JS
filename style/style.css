@@ -6,58 +6,150 @@
 
 }
 
+
+body {
+    background-image: url("../—Slidesdocs—handdrawn style blue cute education_a698b5341c.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
 #container {
-    margin-left: 650px;
+    margin-left: 730px;
     margin-top: 100px;
     width: 360px;
     height: 496px;
-    border: solid black 1px;
+    border: solid rgb(188, 186, 186) 20px;
     background-color: #ECE8E8;
-    border-radius: 5px;
-
+    border-radius: 20px;
+    box-shadow: 10px 10px 25px -4px rgba(0, 0, 0, 0.75);
+    padding: 20px;
+    color: #fff;
 }
 
-#header {
-    margin-top: 6px;
+.row {
     display: flex;
 }
 
+#btnStd {
+    margin-left: -10px;
 
-
-.col1 {
-    width: 265px;
-    height: 44px;
-    margin-left: 20px;
-    border: #ECE8E8 solid 1px;
 }
 
-.résultat {
-    width: 265px;
-    height: 25px;
-    margin-left: 20px;
-    border: #ECE8E8 solid 1px;
+#btnSci {
+    margin-left: 0px;
+
+}
+
+.key {
+    width: 70px;
+    height: 50px;
+    border: none;
+    border-radius: 25px;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+    font-size: 18px;
+    margin-left: 3px;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.75);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+.key:hover {
+    transform: scale(1.1);
+    z-index: 1;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.key.gray {
+    background-color: #ACA4A4;
+    color: #333;
+}
+
+.key.orange {
+    background-color: #F08F1C;
+    color: #fff;
+}
+
+.key.black {
+    background-color: #575656;
+    color: #fff;
+}
+
+#btnEqual {
+    background-color: #FC4E03;
+}
+
+#btnEqualS {
+    background-color: #FC4E03;
 }
 
 .select {
-    border: 0.5px solid black;
-    margin-top: 6px;
-
-}
-
-button {
     width: 50px;
     height: 45px;
     background-color: #F08F1C;
-    color: #ECE8E8;
-    font-size: 20px;
+    border: none;
     border-radius: 15px;
-    margin-top: 0px;
-    margin-left: 5px;
+    margin-top: 6px;
+    box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
+    font-size: 22px;
     cursor: pointer;
+}
+
+.select:hover {
+    background-color: #ff9c00;
+    color: #fff;
+    width: 55px;
+    height: 45px;
+    border-radius: 100px;
+}
+
+#inputCalc {
+    display: flex;
+    width: 260px;
+    height: 35px;
+    margin-left: 70px;
+    margin-top: -60px;
+    border: #ECE8E8 solid 1px;
+    font-size: 20px;
+    font-weight: bold;
+    font-weight: 100;
+    text-align: right;
+    background-color: rgb(250, 252, 251);
+    padding-right: 10px;
+    border-radius: 10px;
+
+}
+
+#inputResult {
+    display: flex;
+    width: 260px;
+    height: 35px;
+    margin-left: 70px;
+    margin-top: 10px;
+    border: #ECE8E8 solid 1px;
+    font-size: 20px;
+    font-weight: bolder;
+    font-weight: 100;
+    text-align: right;
+    background-color: rgb(250, 252, 251);
+    padding-right: 10px;
+    border-radius: 10px;
 }
 
 #tableCalc {
     width: 100%;
+    color: #333;
+
+    cursor: pointer;
 }
 
 #memoryLine {
@@ -67,38 +159,74 @@ button {
     cursor: pointer;
 }
 
-.touche {
-    width: 70px;
-    height: 50px;
-    border-radius: 25px;
-    border: none;
-    margin-bottom: 13px;
-    margin-left: 15px;
-
-    box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.75);
-    #575656;
+#memoryLine :hover {
+    background-color: #575656;
+    color: #ECE8E8;
 }
 
-i {
-    width: 23px;
+.keyS {
+    width: 60px;
+    height: 45px;
+    border: none;
+    border-radius: 25px;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+    font-size: 18px;
+
+    margin-top: 10px;
+    box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.75);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+.keyS:hover {
+    transform: scale(1.1);
+    z-index: 1;
+}
+
+
+.keyS.gray {
+    background-color: #ACA4A4;
+}
+
+.keyS.orange {
+    background-color: #F08F1C;
+    color: #fff;
+}
+
+.keyS.black {
+    background-color: #575656;
+    color: #fff;
+}
+
+#btnPiS img {
+    margin-top: 13px;
+    width: 24px;
     height: 24px;
 }
 
-#boutons {
-    width: 100%;
-    /* margin-left: 20px; */
-    margin-top: 10px;
-
+#btnDeleteS img {
+    margin-top: 13px;
+    width: 24px;
+    height: 24px;
 }
 
-.noir {
-    background-color: #575656;
+#btnDelete img {
+    margin-top: 13px;
+    width: 24px;
+    height: 24px;
 }
 
-.orange {
-    background-color: #F08F1C;
+#btnSquareRoot img {
+    margin-top: 13px;
+    width: 24px;
+    height: 24px;
 }
 
-.gris {
-    background-color: #ACA4A4;
+#btnXPowerY img {
+    margin-top: 13px;
+    width: 24px;
+    height: 24px;
 }
