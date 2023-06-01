@@ -17,7 +17,9 @@
 
 
     <div id="container">
-        <button class="select" onclick="toggleInterface()">Sci</button>
+        <button class="select" onclick="toggleInterface()"><img class="imgSelect" width="34" height="34"
+                src="https://img.icons8.com/external-solid-design-circle/64/external-Right-Arrow-web-design-and-development-solid-design-circle.png"
+                alt="external-Right-Arrow-web-design-and-development-solid-design-circle" /></button>
         <input type="text" id="inputCalc" onclick="isNumericKey(event)">
         <input type="text" id="inputResult" readonly>
 
@@ -25,74 +27,74 @@
 
         <div id="btnStd">
             <div class="row">
-                <div id="btnPourcent" class="key gris">%</div>
-                <div id="btnCE" class="key gris">CE</div>
-                <div id="btnC" class="key gris">C</div>
-                <div id="btnDelete" class="key gris"><img width="50" height="50"
+                <div id="btnPourcent" class="key gray">%</div>
+                <div id="btnCE" class="key gray">CE</div>
+                <div id="btnC" class="key gray">C</div>
+                <div id="btnDelete" class="key gray"><img width="50" height="50"
                         src="https://img.icons8.com/ios/50/clear-symbol.png" alt="clear-symbol" /></div>
             </div>
             <div class="row">
-                <div id="btnInverse" class="key gris">1/x</div>
-                <div id="btnSquare" class="key gris">x2</div>
-                <div id="btnSquareRoot" class="key gris"><img width="24" height="24"
+                <div id="btnInverse" class="key gray">1/x</div>
+                <div id="btnSquare" class="key gray">x2</div>
+                <div id="btnSquareRoot" class="key gray"><img width="24" height="24"
                         src="https://img.icons8.com/ios-filled/50/ffffff/square-root.png" alt="square-root" /></div>
                 <div id="btnDivide" class="key orange">/</div>
             </div>
             <div class="row">
-                <div id="btn7" class="key noir">7</div>
-                <div id="btn8" class="key noir">8</div>
-                <div id="btn9" class="key noir">9</div>
+                <div id="btn7" class="key black">7</div>
+                <div id="btn8" class="key black">8</div>
+                <div id="btn9" class="key black">9</div>
                 <div id="btnMultiply" class="key orange">X</div>
             </div>
             <div class="row">
-                <div id="btn4" class="key noir">4</div>
-                <div id="btn5" class="key noir">5</div>
-                <div id="btn6" class="key noir">6</div>
+                <div id="btn4" class="key black">4</div>
+                <div id="btn5" class="key black">5</div>
+                <div id="btn6" class="key black">6</div>
                 <div id="btnSubstract" class="key orange">-</div>
             </div>
             <div class="row">
-                <div id="btn1" class="key noir">1</div>
-                <div id="btn2" class="key noir">2</div>
-                <div id="btn3" class="key noir">3</div>
+                <div id="btn1" class="key black">1</div>
+                <div id="btn2" class="key black">2</div>
+                <div id="btn3" class="key black">3</div>
                 <div id="btnAdd" class="key orange">+</div>
             </div>
             <div class="row">
-                <div id="btnChangeSign" class="key noir">+/-</div>
-                <div id="btn0" class="key noir">0</div>
-                <div id="btnComma" class="key noir">,</div>
+                <div id="btnChangeSign" class="key black">+/-</div>
+                <div id="btn0" class="key black">0</div>
+                <div id="btnComma" class="key black">,</div>
                 <div id="btnEqual" class="key orange">=</div>
             </div>
         </div>
 
         <div id="btnSci" style="display: none;">
             <div class="row">
-                <div id="btnPourcentS" class="keyS gris">%</div>
-                <div id="btnPiS" class="keyS gris"><img width="24" height="24"
+                <div id="btnPourcentS" class="keyS gray">%</div>
+                <div id="btnPiS" class="keyS gray"><img width="24" height="24"
                         src="https://img.icons8.com/material-outlined/24/ffffff/pi.png" alt="pi" /></i></div>
-                <div id="btnES" class="keyS gris">e</div>
-                <div id="btnCS" class="keyS gris">C</div>
-                <div id="btnDeleteS" class="keyS gris"><img width="50" height="50"
+                <div id="btnES" class="keyS gray">e</div>
+                <div id="btnCS" class="keyS gray">C</div>
+                <div id="btnDeleteS" class="keyS gray"><img width="50" height="50"
                         src="https://img.icons8.com/ios/50/000000/clear-symbol.png" alt="clear-symbol" />
                 </div>
 
             </div>
             <div class="row">
-                <div id="btnSquareS" class="keyS gris">X2</div>
-                <div id="btnInverseS" class="keyS gris">1/x</div>
-                <div id="btnAbs" class="keyS gris">|x|</div>
-                <div id="btnExp" class="keyS gris">exp</div>
-                <div id="btnMod" class="keyS gris">MOD</div>
+                <div id="btnSquareS" class="keyS gray">X2</div>
+                <div id="btnInverseS" class="keyS gray">1/x</div>
+                <div id="btnAbs" class="keyS gray">|x|</div>
+                <div id="btnExp" class="keyS gray">exp</div>
+                <div id="btnMod" class="keyS gray">MOD</div>
             </div>
             <div class="row">
-                <div id="btnSquareRootS" class="keyS gris"><img width="24" height="24"
+                <div id="btnSquareRootS" class="keyS gray"><img width="24" height="24"
                         src="https://img.icons8.com/ios-filled/50/ffffff/square-root.png" alt="square-root" /></div>
-                <div id="btnParenthesisIn" class="keyS gris">(</div>
-                <div id="btnParenthesisOut" class="keyS gris">)</div>
-                <div id="btnFactorial" class="keyS gris">n!</div>
+                <div id="btnParenthesisIn" class="keyS gray">(</div>
+                <div id="btnParenthesisOut" class="keyS gray">)</div>
+                <div id="btnFactorial" class="keyS gray">n!</div>
                 <div id="btnDivideS" class="keyS orange">/</div>
             </div>
             <div class="row">
-                <div id="btnXPowerY" class="keyS gris"><img width="24" height="24"
+                <div id="btnXPowerY" class="keyS gray"><img width="24" height="24"
                         src="https://img.icons8.com/external-outline-black-m-oki-orlando/32/ffffff/external-xy-math-vol-1-outline-outline-black-m-oki-orlando-4.png"
                         alt="external-xy-math-vol-1-outline-outline-black-m-oki-orlando-4" /></div>
                 <div id="btn7S" class="keyS noir">7</div>
@@ -101,21 +103,21 @@
                 <div id="btnMultiplyS" class="keyS orange">X</div>
             </div>
             <div class="row">
-                <div id="btn10PowerX" class="keyS gris">10x</div>
+                <div id="btn10PowerX" class="keyS gray">10x</div>
                 <div id="btn4S" class="keyS noir">4</div>
                 <div id="btn5S" class="keyS noir">5</div>
                 <div id="btn6S" class="keyS noir">6</div>
                 <div id="btnSubstractS" class="keyS orange">-</div>
             </div>
             <div class="row">
-                <div id="btnLog" class="keyS gris">log</div>
+                <div id="btnLog" class="keyS gray">log</div>
                 <div id="btn1S" class="keyS noir">1</div>
                 <div id="btn2S" class="keyS noir">2</div>
                 <div id="btn3S" class="keyS noir">3</div>
                 <div id="btnAddS" class="keyS orange">+</div>
             </div>
             <div class="row">
-                <div id="btnLn" class="keyS gris">ln</div>
+                <div id="btnLn" class="keyS gray">ln</div>
                 <div id="btnChangeSignS" class="keyS noir">+/-</div>
                 <div id="btn0S" class="keyS noir">0</div>
                 <div id="btnCommaS" class="keyS noir">,</div>

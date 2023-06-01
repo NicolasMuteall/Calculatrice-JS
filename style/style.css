@@ -69,7 +69,7 @@ body {
     justify-content: space-between;
 }
 
-.key.gris {
+.key.gray {
     background-color: #ACA4A4;
     color: #fff;
 }
@@ -79,7 +79,7 @@ body {
     color: #fff;
 }
 
-.key.noir {
+    {
     background-color: #575656;
     color: #fff;
 }
@@ -187,8 +187,12 @@ body {
     z-index: 1;
 }
 
+.imgSelect {
+    margin-top: 6px;
+    opacity: 0.6;
+}
 
-.keyS.gris {
+.keyS.gray {
     background-color: #ACA4A4;
 }
 
@@ -197,7 +201,7 @@ body {
     color: #fff;
 }
 
-.keyS.noir {
+.keyS.black {
     background-color: #575656;
     color: #fff;
 }
