@@ -188,22 +188,45 @@ AddNumber(btn7, 7);
 AddNumber(btn8, 8);
 AddNumber(btn9, 9);
 
+let listNumber = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+
 function AddParenthesis(btn, operator) {
     btn.onclick = function () {
         let chain = inputCalc.value;
-        console.log(chain);
-
         let lastChart = chain.charAt(chain.length - 1);
         console.log(lastChart);
 
-        if ((lastChart == operator || lastChart !== "") && operator == " ( ") {
+        if (lastChart == " ") {
+            chain = chain.slice(0, chain.length - 1);
+            lastChart = chain.charAt(chain.length - 1);
+        }
+
+        if (
+            operator == "(" &&
+            listOperator.includes(lastChart) === false &&
+            lastChart == "0"
+        ) {
             DeleteLeftZero();
-            console.log(lastChart);
             inputCalc.value += operator;
-        } else if (lastChart !== operator && lastChart !== "") {
-            console.log(lastChart);
-            console.log(lastChart !== operator);
+        }
+        if (
+            operator == "(" &&
+            (listOperator.includes(lastChart) === true || lastChart == "(")
+        ) {
             inputCalc.value += operator;
+        }
+
+        let parenthesisIn = (inputCalc.value.match(/\(/g) || []).length;
+        let parenthesisOut = (inputCalc.value.match(/\)/g) || []).length;
+
+        if (parenthesisOut < parenthesisIn) {
+            if (operator == ")" && listNumber.includes(lastChart) === true) {
+                inputCalc.value += operator;
+            }
+
+            if (operator == ")" && lastChart == ")") {
+                inputCalc.value += operator;
+            }
         }
     };
 }
@@ -228,19 +251,18 @@ function AddOperator(btn, operator) {
         }
 
         if (listOperator.includes(lastChart) === false) {
-            if (lastOperator === '/') {
+            if (lastOperator === "/") {
                 if (lastElement != 0) {
-                    console.log('ok');
+                    console.log("ok");
                     inputCalc.value += " " + operator + " ";
                 }
             } else {
                 inputCalc.value += " " + operator + " ";
             }
         }
-
-    }
+    };
 }
-let listOperator = ["+", "-", "", "/"];
+let listOperator = ["+", "-", "*", "/"];
 
 AddOperator(btnAdd, "+");
 AddOperator(btnSubstract, "-");
@@ -339,7 +361,7 @@ function result() {
         console.log(lastElement);
         console.log(lastOperator);
 
-        if (lastOperator === '/') {
+        if (lastOperator === "/") {
             if (lastElement != 0) {
                 for (i = 0; i < chainDivide.length; i++) {
                     let estPresent = chainDivide[i].includes("^");
@@ -434,8 +456,10 @@ AddNumber(btn7S, 7);
 AddNumber(btn8S, 8);
 AddNumber(btn9S, 9);
 
-AddParenthesis(btnParenthesisIn, " ( ");
-AddParenthesis(btnParenthesisOut, " ) ");
+AddParenthesis(btnParenthesisIn, "(");
+AddParenthesis(btnParenthesisOut, ")");
+// AddParenthesis(btnParenthesisIn, " ( ");
+// AddParenthesis(btnParenthesisOut, " ) ");
 
 function AddFn2Var(btn, operator) {
     btn.onclick = function () {
@@ -705,7 +729,7 @@ function resultS() {
         console.log(lastElement);
         console.log(lastOperator);
 
-        if (lastOperator === '/') {
+        if (lastOperator === "/") {
             if (lastElement != 0) {
                 for (i = 0; i < chainDivide.length; i++) {
                     let estPresent = chainDivide[i].includes("^");

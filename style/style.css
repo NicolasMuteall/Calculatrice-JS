@@ -69,7 +69,7 @@ body {
     justify-content: space-between;
 }
 
-.key.gris {
+.key.gray {
     background-color: #ACA4A4;
     color: #333;
 }
@@ -79,7 +79,7 @@ body {
     color: #fff;
 }
 
-.key.noir {
+.key.black {
     background-color: #575656;
     color: #fff;
 }
@@ -187,7 +187,7 @@ body {
 }
 
 
-.keyS.gris {
+.keyS.gray {
     background-color: #ACA4A4;
 }
 
@@ -196,7 +196,7 @@ body {
     color: #fff;
 }
 
-.keyS.noir {
+.keyS.black {
     background-color: #575656;
     color: #fff;
 }
